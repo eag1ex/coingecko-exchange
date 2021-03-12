@@ -8,11 +8,12 @@ export class MobxStore {
     state = "pending" // "pending", "ready", "error",
     exchanges = []
     productDetail={}
+    cachedProducts={}
     apiBase = api.base
     constructor() {
         makeObservable(this, {
             state: observable,
-            productDetail:observable
+            productDetail:observable,
             // exchanges: observable
         })
 
@@ -53,6 +54,12 @@ export class MobxStore {
 
     fetch_exchangeProduct(id) {
 
+        if(this.cachedProducts[id]){
+            this.productDetail = this.cachedProducts[id]
+            log('[productDetail][cached]')
+            return Promise.resolve(this.cachedProducts[id])
+        }
+
         this.state = 'pending'
         this.productDetail = {}
         debug('[fetch]', api.exchanges())
@@ -64,6 +71,7 @@ export class MobxStore {
 
                 runInAction(() => {
                     this.productDetail = response || {}
+                    this.cachedProducts[id] = response
                     this.state = "ready"
                     log('[productDetail]', this.productDetail)
                 })

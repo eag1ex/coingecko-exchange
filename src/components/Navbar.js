@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
-import { delay } from 'x-utils-es/umd'
+import { delay,log } from 'x-utils-es/umd'
 import Chip from '@material-ui/core/Chip'
 import TagFacesIcon from '@material-ui/icons/TagFaces'
 import { NavLink, withRouter } from "react-router-dom"
@@ -24,23 +24,31 @@ const useStyles = makeStyles((theme) => ({
 function Nav({ history, routeName }) {
 
     const [userName, setUser] = React.useState('')
-    //  console.log('routeName', routeName)
 
-    // assign fake user 
-    // const defaultUser = 'Johndoe'
-    // delay(3000).then(() => {
-    //     setUser(defaultUser)
-    // })
-    // const loginUser = () => {
-    //     localStorage.setItem("token", "some-login-token");
-    //     history.push("/profile/Vijit");
-    //   };
-    
-    //   const logoutUser = () => {
-    //     localStorage.removeItem("token");
-    //     history.push("/");
-    //   };
-  
+    let Links = (props) => {
+        const { first, second } = props
+ 
+        return (<React.Fragment>
+            {first && !second ? (<NavLink
+                className="btn btn-sm btn-secondary text-white py-0 px-0"
+                activeClassName="is-active"
+                to={first}
+                exact>
+                {first.toUpperCase()}</NavLink>) : 
+                first && second ? (<><NavLink
+                            className="btn btn-sm btn-secondary text-white py-0 px-0"
+                            to="/app/exchanges"
+                            exact>
+                            {first.toUpperCase()}</NavLink>&nbsp;/&nbsp;<NavLink
+                                className="btn btn-sm btn-secondary text-white py-0 px-0"
+                                activeClassName="is-active"
+                                to={second}
+                                exact>
+                    {second.toUpperCase()}</NavLink></>):null}
+        </React.Fragment>)
+    }
+
+
     const classes = useStyles()
 
     return (
@@ -51,16 +59,8 @@ function Nav({ history, routeName }) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-                        {(routeName || '').toUpperCase() || null}
+                        <Links {...routeName}/>
                     </Typography>
-
-                    {/* {routeName ? (<Chip
-                        avatar={<TagFacesIcon />}
-                        className="nav-avatar"
-                        label={routeName}
-                        clickable
-                        variant="outlined"
-                    />) : null} */}
 
                 </Toolbar>
             </AppBar>

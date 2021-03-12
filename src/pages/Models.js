@@ -20,7 +20,6 @@ export class ProductModel {
         this.baseUrl = baseUrl
         this.item = copy(item)
        
-        log(`[ProductModel][${this.entity}]`)
     }
 
     get detailUrl(){

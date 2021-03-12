@@ -11,7 +11,7 @@ import clsx from 'clsx'
 import Badge from '@material-ui/core/Badge'
 import { ProductModel } from './Models'
 import { log, onerror,copy } from 'x-utils-es'
-import { NavLink, withRouter } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 const useStyles = makeStyles((theme) => ({
     margin: {
         margin: theme.spacing(1)
@@ -48,7 +48,6 @@ const useStyles = makeStyles((theme) => ({
 const Product = observer(({ mobxstore, item,history }) => {
     const baseUrl = '/app/exchanges'
     const prod = new ProductModel('Product',item,baseUrl )
-    log('history??', history)
     const classes = useStyles()
   
     const Circle = (prop) => (<div className={clsx(classes.shape, classes.shapeCircle)}><p className="text-secondary pt-1 small strong ">{prop.rank}&nbsp;&nbsp;</p></div>)

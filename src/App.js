@@ -22,10 +22,9 @@ if (process.env.NODE_ENV === 'development') {
 const mobxstore = new MobxStore()
 function App({history}) {
 
-    const [routeName, setRouteName] = React.useState('')
+    const [routeName, setRouteName] = React.useState({})
     const onRouteChange = (routeName, second) => {
-        if (second) routeName = routeName + '/' + second
-        setRouteName(routeName)
+        setRouteName({first:routeName,second})
     }
  
     return (
@@ -53,7 +52,7 @@ function App({history}) {
                         </Route>  
  
                         <Route exact path="/app/:name/:productID">
-                            <ProductDetail mobxstore={mobxstore} onRouteChange={(product) => onRouteChange('exchanges',product)} />
+                            <ProductDetail mobxstore={mobxstore} onRouteChange={(name,product) => onRouteChange('exchanges',product)} />
                         </Route>
   
           
