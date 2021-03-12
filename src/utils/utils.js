@@ -1,8 +1,6 @@
 
 import { isObject } from 'x-utils-es'
 
-
-
 /**
  * fetch handler if status error reject response
  * @param {*} response 
@@ -14,8 +12,7 @@ export const fetchHandler = async (response) => {
         let resp = await response.json() // {message,code,error}
         // if our server is up we know what to expect, else can return empty string
         if (isObject(resp)) {
-            return Promise.reject(resp.message)
+            return Promise.reject(resp.error)
         } else Promise.reject(resp || "HTTP-Error: " + resp.status)
     }
 }
-

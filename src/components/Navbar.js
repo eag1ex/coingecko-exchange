@@ -8,7 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import { delay } from 'x-utils-es/umd'
 import Chip from '@material-ui/core/Chip'
 import TagFacesIcon from '@material-ui/icons/TagFaces'
-
+import { NavLink, withRouter } from "react-router-dom"
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1
@@ -21,35 +21,46 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function Nav() {
+function Nav({ history, routeName }) {
 
     const [userName, setUser] = React.useState('')
+    //  console.log('routeName', routeName)
 
     // assign fake user 
     // const defaultUser = 'Johndoe'
     // delay(3000).then(() => {
     //     setUser(defaultUser)
     // })
+    // const loginUser = () => {
+    //     localStorage.setItem("token", "some-login-token");
+    //     history.push("/profile/Vijit");
+    //   };
+    
+    //   const logoutUser = () => {
+    //     localStorage.removeItem("token");
+    //     history.push("/");
+    //   };
   
     const classes = useStyles()
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root + ' navbar'}>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
-            Exchange
+                        {(routeName || '').toUpperCase() || null}
                     </Typography>
-                    {userName ? (<Chip
+
+                    {/* {routeName ? (<Chip
                         avatar={<TagFacesIcon />}
                         className="nav-avatar"
-                        label={userName}
+                        label={routeName}
                         clickable
                         variant="outlined"
-                    />) : null}
+                    />) : null} */}
 
                 </Toolbar>
             </AppBar>
@@ -57,4 +68,4 @@ function Nav() {
     )
 }
 
-export default Nav
+export default withRouter(Nav)

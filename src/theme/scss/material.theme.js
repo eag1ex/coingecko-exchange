@@ -5,12 +5,12 @@ export const theme = createMuiTheme({
     palette: {
         primary: {
             // light: will be calculated from palette.primary.main,
-            main: '#00897b'
+            main: '#00acc1'
             // dark: will be calculated from palette.primary.main,
             // contrastText: will be calculated to contrast with palette.primary.main
         },
         secondary: {
-            main: '#c0ca33'
+            main: '#ffcc80'
             // dark: will be calculated from palette.secondary.main,
             //  contrastText: '#ffcc00',
         },
@@ -23,6 +23,7 @@ export const theme = createMuiTheme({
         tonalOffset: 0.2,
         background: {
             paper: '#f4f4f4'
-        }
+        },
+        fontFamily: 'Roboto, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif'
     }
 })
