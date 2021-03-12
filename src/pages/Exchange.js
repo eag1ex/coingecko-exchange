@@ -1,8 +1,9 @@
 import "@scss/pages/home.component.scss"
-import React from 'react'
+import React,{comp} from 'react'
 import withStoreReady from '../components/withStore.hoc'
 import { useParams } from "react-router-dom"
 import Product from './Product'
+import { NavLink, withRouter } from "react-router-dom"
 
 function Exchange(props) {
     const { mobxstore, onRouteChange } = props 
@@ -15,7 +16,7 @@ function Exchange(props) {
             onRouteChange(name)    
             setDidLoad(true)
         }
-    }, [didLoad, onRouteChange])
+    }, [didLoad, onRouteChange,name])
 
     return (
         <div id="home-wrap">
@@ -40,4 +41,4 @@ function Exchange(props) {
     )
 }
 
-export default withStoreReady(Exchange,'exchange')
+export default withRouter(withStoreReady(Exchange,'exchange'))

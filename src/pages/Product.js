@@ -10,7 +10,8 @@ import Link from '@material-ui/core/Link'
 import clsx from 'clsx'
 import Badge from '@material-ui/core/Badge'
 import { ProductModel } from './Models'
-
+import { log, onerror,copy } from 'x-utils-es'
+import { NavLink, withRouter } from "react-router-dom"
 const useStyles = makeStyles((theme) => ({
     margin: {
         margin: theme.spacing(1)
@@ -44,11 +45,10 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
   
-const Product = observer(({ mobxstore, item }) => {
-    const baseUrl = '/exchanges/'
-    const delailUrl = `/exchanges/${prod.item.id}`
-
-    const prod = new ProductModel('Product',item,detailUrl, baseUrl,delailUrl)
+const Product = observer(({ mobxstore, item,history }) => {
+    const baseUrl = '/app/exchanges'
+    const prod = new ProductModel('Product',item,baseUrl )
+    log('history??', history)
     const classes = useStyles()
   
     const Circle = (prop) => (<div className={clsx(classes.shape, classes.shapeCircle)}><p className="text-secondary pt-1 small strong ">{prop.rank}&nbsp;&nbsp;</p></div>)
@@ -82,13 +82,15 @@ const Product = observer(({ mobxstore, item }) => {
                                 </Typography>
                             </Grid>
                             <Grid item className="my-0">
+                            
                                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                                    <Link 
-                                        className="btn btn-sm btn-secondary text-white"
-                                        href={delailUrl} onClick={(e) => {
-                                        }}>
+                                <NavLink
+                                    className="btn btn-sm btn-secondary text-white"
+                                    activeClassName="is-active"
+                                    to={prod.detailUrl}
+                                    exact>
                                     Detail
-                                    </Link>
+                                </NavLink>
                                 </Typography>
                             </Grid>
                         </Grid>

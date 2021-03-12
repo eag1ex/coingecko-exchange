@@ -10,17 +10,21 @@ export class ProductModel {
     item = {}
     status = '' // [pending,error,ready]
     baseUrl=''
-    detailUrl=''
-    constructor(entity='',item = {}, baseUrl, detailUrl) {
+
+    constructor(entity='',item = {}, baseUrl) {
         makeObservable(this, {
             item: observable,
             onClick: action
         })
-        this.baseUrl = baseUrl
-        this.detailUrl = detailUrl
-        this.item = copy(item)
         this.entity = entity
+        this.baseUrl = baseUrl
+        this.item = copy(item)
+       
         log(`[ProductModel][${this.entity}]`)
+    }
+
+    get detailUrl(){
+        return `${this.baseUrl}/${this.item.id}`
     }
 
     onClick(d) {

@@ -9,10 +9,14 @@ import { observer } from "mobx-react-lite"
 import Link from '@material-ui/core/Link'
 import { useParams } from "react-router-dom"
 import withStoreReady from '../components/withStore.hoc'
+import withProduct from '../components/withProduct'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import Message from '../components/Messages'
 import clsx from 'clsx'
 import Badge from '@material-ui/core/Badge'
 import { ProductModel } from './Models'
+import { log, onerror, copy } from 'x-utils-es'
+import { NavLink, withRouter } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
     margin: {
@@ -47,26 +51,22 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
+const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
 
-  
-const ProductDetail = observer(({ mobxstore, item,onRouteChange }) => {
-
-    const { product } = useParams()
-
-    const prod = new ProductModel(item,detailUrl, baseUrl,delailUrl)
-
+    const { productID } = useParams()
+    const baseUrl = '/app/exchanges'
+    const prod = new ProductModel('productDetail', mobxstore.productDetail, baseUrl)
     const [didLoad, setDidLoad] = React.useState(false)
 
     React.useEffect(() => {
         if (!didLoad) {
-            onRouteChange(product)    
+            onRouteChange(productID)
             setDidLoad(true)
         }
     }, [didLoad, onRouteChange])
 
     const classes = useStyles()
 
-    // return (<div className="d-flex justify-content-center align-items-center m-5 p-2"><CircularProgress color="inherit" size={20} /></div>)
 
     return (
         <div className={classes.root}>
@@ -87,7 +87,8 @@ const ProductDetail = observer(({ mobxstore, item,onRouteChange }) => {
                                     {prod.item.country}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" >
-                                    <Link 
+
+                                    <Link
                                         target=" _blank"
                                         className="px-0 btn btn-sm btn-muted text-muted"
                                         href={prod.item.url} onClick={(e) => {
@@ -96,14 +97,17 @@ const ProductDetail = observer(({ mobxstore, item,onRouteChange }) => {
                                     </Link>
                                 </Typography>
                             </Grid>
+
                             <Grid item className="my-0">
                                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                                    <Link 
+                                    <NavLink
                                         className="btn btn-sm btn-secondary text-white"
-                                        href={delailUrl} onClick={(e) => {
-                                        }}>
-                                    Detail
-                                    </Link>
+                                        activeClassName="is-active"
+                                        to={prod.baseUrl}
+                                        exact>
+                                        Back to Exchanges
+                                </NavLink>
+
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -118,5 +122,5 @@ const ProductDetail = observer(({ mobxstore, item,onRouteChange }) => {
         </div>
     )
 })
-                    
-export default withStoreReady(ProductDetail,'productDetail')
+
+export default withRouter(withProduct(ProductDetail))
