@@ -12,19 +12,18 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PaginationBottom(props) {
     const classes = useStyles()
-    const { perPage, history } = props
+    const { perPage, history, pageState } = props
     const [page, setPage] = React.useState(1)
-    const handleChange = (env, value) => {     
+    const handleChange = (env, value) => {    
         setPage(value)   
-        // history.push("/profile/Vijit");   
-        return false
+        console.log('push?', value)
+        history.push({ pathname: `/app/exchanges/${value}` }) 
     }
 
     return ( 
-
         <div className={classes.root + ' row'}>
             <div className="col-12 mt-1 mb-5">
-                <Pagination className="d-flex justify-content-center" page={page} count={perPage} variant="outlined" shape="rounded" onChange={ handleChange}/>
+                <Pagination className="d-flex justify-content-center" page={(pageState || page)} count={perPage} variant="outlined" shape="rounded" onChange={ handleChange}/>
             </div>       
         </div>
     )

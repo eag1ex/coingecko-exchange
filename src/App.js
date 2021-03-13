@@ -34,26 +34,26 @@ function App() {
                 <div className="container-fluid mt-3">
 
                     <Switch>
-                    
-                        <Route exact path="/" render={(props) => {
-                            return (<Redirect to="/app/exchanges/1"/>)                          
-                        }}/> 
 
-                        <Route exact path="/exchanges" render={(props) => {
-                            return (<Redirect to="/app/exchanges/1"/>)                          
-                        }}/> 
+                        <Route exact path="/">
+                            <Redirect to="/app/exchanges/1"/>
+                        </Route>
+
+                        <Route exact path="/exchanges">
+                            <Redirect to="/app/exchanges/1"/>
+                        </Route>
+
+                        <Route exact path="/exchanges/:name">
+                            <Redirect to="/app/exchanges/1"/>
+                        </Route>
 
                         <Route exact path="/app/exchanges/">
                             <Redirect to="/app/exchanges/1"/>
                         </Route>
 
-                        <Route exact path="/app/exchanges/:page/:productID">
+                        <Route exact path="/app">
                             <Redirect to="/app/exchanges/1"/>
                         </Route>
-
-                        <Route exact path="/app" render={(props) => {
-                            return (<Redirect to="/app/exchanges/1"/>)                          
-                        }}/> 
 
                         <Route exact path="/app/:name/:page">
                             <Exchange mobxstore={mobxstore} onRouteChange={(first) => onRouteChange(first)} />

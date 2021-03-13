@@ -23,11 +23,9 @@ const useStyles = makeStyles((theme) => ({
 
 function Nav({ history, routeName }) {
 
-    // const [userName, setUser] = React.useState('')
-
     let Links = (props) => {
         const { first, second } = props
-        let { name, page, route } = first || {}
+        let { name, route } = first || {}
         return (<React.Fragment>
             {route && !second ? (<NavLink
                 className="btn btn-sm btn-secondary text-white py-0 px-0"
@@ -39,7 +37,7 @@ function Nav({ history, routeName }) {
                     className="btn btn-sm btn-secondary text-white py-0 px-0"
                     to={(route + '/' + second)}
                     exact>
-                    {first.toUpperCase()}</NavLink>&nbsp;/&nbsp;<NavLink
+                    {name.toUpperCase()}</NavLink>&nbsp;/&nbsp;<NavLink
                     className="btn btn-sm btn-secondary text-white py-0 px-0"
                     activeClassName="is-active"
                     to={second}

@@ -9,9 +9,9 @@ const withStoreReady = (Component, entity) => {
         const { mobxstore } = props
         const { page } = useParams()
         const [pg, setPage] = React.useState(null)
-
+       
         React.useEffect(() => {
-            if (pg === null) {               
+            if (pg === null || pg !== page) {               
                 mobxstore.fetch_exchanges({ page, per_page: mobxstore.pagedPerPage }).then(n => {
                     setPage(page)
                 })

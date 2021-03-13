@@ -40,7 +40,7 @@ function Exchange(props) {
                    
                 </div>
             </div>
-            <Pagination history={history} perPage={mobxstore.pagedPerPage} routeOnChange={(page) => {
+            <Pagination pageState={Number(page)} history={history} perPage={mobxstore.pagedPerPage} routeOnChange={(page) => {
                 log('route on change', page)
             }}/>
         </div>
