@@ -1,6 +1,6 @@
 import React from "react"
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom"
-import { theme } from "@scss/material.theme"
+import { theme } from "./theme"
 import { ThemeProvider } from '@material-ui/core/styles'
 import { MobxStore } from './store'
 import Navbar from "./components/Navbar"

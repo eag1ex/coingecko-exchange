@@ -1,4 +1,4 @@
-import "@scss/pages/home.component.scss"
+import "../theme/scss/pages/exchange.component.scss"
 import React from 'react'
 import withStoreReady from '../components/withStore.hoc'
 import { useParams } from "react-router-dom"
