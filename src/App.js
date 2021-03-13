@@ -36,35 +36,31 @@ function App() {
                     <Switch>
                     
                         <Route exact path="/" render={(props) => {
-                            return (<Redirect to="/app/exchanges/paged/1"/>)                          
+                            return (<Redirect to="/app/exchanges/1"/>)                          
                         }}/> 
 
                         <Route exact path="/exchanges" render={(props) => {
-                            return (<Redirect to="/app/exchanges/paged/1"/>)                          
+                            return (<Redirect to="/app/exchanges/1"/>)                          
                         }}/> 
 
                         <Route exact path="/app/exchanges/">
-                            <Redirect to="/app/exchanges/paged/1"/>
+                            <Redirect to="/app/exchanges/1"/>
                         </Route>
 
-                        <Route exact path="/app/exchanges/paged/">
-                            <Redirect to="/app/exchanges/paged/1"/>
-                        </Route>
-
-                        <Route exact path="/app/exchanges/product/">
-                            <Redirect to="/app/exchanges/paged/1"/>
+                        <Route exact path="/app/exchanges/:page/:productID">
+                            <Redirect to="/app/exchanges/1"/>
                         </Route>
 
                         <Route exact path="/app" render={(props) => {
-                            return (<Redirect to="/app/exchanges/paged/1"/>)                          
+                            return (<Redirect to="/app/exchanges/1"/>)                          
                         }}/> 
 
-                        <Route exact path="/app/:name/paged/:page">
+                        <Route exact path="/app/:name/:page">
                             <Exchange mobxstore={mobxstore} onRouteChange={(first) => onRouteChange(first)} />
                         </Route>  
  
-                        <Route exact path="/app/:name/product/:productID">
-                            <ProductDetail mobxstore={mobxstore} onRouteChange={(name, second) => onRouteChange('exchanges', second)} />
+                        <Route exact path="/app/:name/:page/:productID">
+                            <ProductDetail mobxstore={mobxstore} onRouteChange={(first, second) => onRouteChange(first, second)} />
                         </Route>
           
                         <Route exact path="/error" render={(props) => {          

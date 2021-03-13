@@ -15,7 +15,8 @@ export default function PaginationBottom(props) {
     const { perPage, history } = props
     const [page, setPage] = React.useState(1)
     const handleChange = (env, value) => {     
-        setPage(value)      
+        setPage(value)   
+        // history.push("/profile/Vijit");   
         return false
     }
 

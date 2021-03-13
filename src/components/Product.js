@@ -40,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
 
 }))
   
-const Product = observer(({ mobxstore, item, history }) => {
-    const baseUrl = '/app/exchanges'
+const Product = observer(({ mobxstore, item, history, page }) => {
+    const baseUrl = `/app/exchanges/${page}`
     const prod = new ProductModel('Product', item, baseUrl)
     const classes = useStyles()
 

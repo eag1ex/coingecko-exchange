@@ -11,13 +11,15 @@ function Exchange(props) {
     const { name, page } = useParams()
 
     const [didLoad, setDidLoad] = React.useState(false)
-    console.log('paged:', page)
+   
     React.useEffect(() => {
         if (!didLoad) {
-            onRouteChange(name)    
+            let rName = name + '/' + page
+            // console.log('name/page:', rName)
+            onRouteChange({ name, page, route: rName })    
             setDidLoad(true)
         }
-    }, [didLoad, onRouteChange, name])
+    }, [didLoad, onRouteChange, page, name])
 
     return (
         <div id="home-wrap">
@@ -32,7 +34,7 @@ function Exchange(props) {
                 <div className="col-sm-12 col-md-7 m-auto p-4">
                     <React.Fragment>
                         {(mobxstore.exchanges || []).length ? mobxstore.exchanges.map((item, inx) => {
-                            return (<Product key={inx} item={item} mobxstore={mobxstore}/>)
+                            return (<Product key={inx} item={item} mobxstore={mobxstore} page={page}/>)
                         }) : 'no exchanges available yet!'}
                     </React.Fragment>
                    

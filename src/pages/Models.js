@@ -23,7 +23,7 @@ export class ProductModel {
     }
 
     get detailUrl() {
-        return `${this.baseUrl}/product/${this.item.id}`
+        return `${this.baseUrl}/${this.item.id}`
     }
 
     /**

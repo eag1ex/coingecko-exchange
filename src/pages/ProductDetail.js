@@ -48,17 +48,18 @@ const useStyles = makeStyles((theme) => ({
 
 const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
 
-    const { productID } = useParams()
-    const baseUrl = '/app/exchanges'
+    const { productID, page, name } = useParams()
+    const baseUrl = `/app/exchanges/${page}`
     const prod = new ProductModel('productDetail', mobxstore.productDetail, baseUrl)
     const [didLoad, setDidLoad] = React.useState(false)
 
     React.useEffect(() => {
         if (!didLoad) {
-            onRouteChange('', productID)
+            let first = { name, page, route: name + '/' + page }
+            onRouteChange(first, productID)
             setDidLoad(true)
         }
-    }, [didLoad, onRouteChange])
+    }, [didLoad, onRouteChange, name, page])
 
     const classes = useStyles()
 
