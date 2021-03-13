@@ -8,9 +8,9 @@ import ButtonBase from '@material-ui/core/ButtonBase'
 import { observer } from "mobx-react-lite"
 import Link from '@material-ui/core/Link'
 import { useParams } from "react-router-dom"
-import withProduct from '../components/withProduct'
+import withProduct from '../components/withProduct.hoc'
 import { ProductModel } from './Models'
-import { log, onerror, copy } from 'x-utils-es'
+import SocialMedia from '../components/SocialMedia'
 import { NavLink, withRouter } from "react-router-dom"
 
 const useStyles = makeStyles((theme) => ({
@@ -52,19 +52,18 @@ const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
     const baseUrl = '/app/exchanges'
     const prod = new ProductModel('productDetail', mobxstore.productDetail, baseUrl)
     const [didLoad, setDidLoad] = React.useState(false)
-    // icons to add, source: https://material-ui.com/components/material-icons/#material-icons
+
     React.useEffect(() => {
         if (!didLoad) {
-            onRouteChange('/',productID)
+            onRouteChange('', productID)
             setDidLoad(true)
         }
     }, [didLoad, onRouteChange])
 
     const classes = useStyles()
 
-
     return (
-        <div className={classes.root +' mt-5'}>
+        <div className={classes.root + ' mt-5'}>
             <Paper className={classes.paper}>
                 <Grid container spacing={2}>
                     <Grid item >
@@ -76,13 +75,13 @@ const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
                         <Grid item xs container direction="column" spacing={2}>
                             <Grid item xs>
                                 <Typography gutterBottom variant="subtitle1" className="my-0">
-                                <strong>{prod.item.name}</strong>
+                                    <strong>{prod.item.name}</strong>
                                 </Typography>
                                 <Typography variant="body2" gutterBottom className="my-1">
 
-                                <React.Fragment>
-                                       {prod.item.description ?( <><span className="p-2 text-muted">Description:</span>{prod.item.description}</>):null}
-                                </React.Fragment>
+                                    <React.Fragment> 
+                                        {prod.item.description ? (<><span className="text-muted cf">Description:</span><span className=" mt-0">{prod.item.description}</span></>) : null}
+                                    </React.Fragment>
            
                                 </Typography>
 
@@ -91,24 +90,27 @@ const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
                                 </Typography>
 
                                 <Typography variant="body2" gutterBottom className="my-1">
-                                  <span className="text-muted">Trust Rank: </span>{prod.item.trust_score_rank}
+                                    <span className="text-muted">Trust Rank: </span>{prod.item.trust_score_rank}
                                 </Typography>
 
                                 <Typography variant="body2" gutterBottom className="my-1">
-                                <span className="text-muted">Established:</span> {prod.item.year_established}
+                                    <span className="text-muted">Established:</span> {prod.item.year_established}
                                 </Typography>
                                 
-                                <Typography variant="body2" color="textSecondary" >
+                                { prod.item.url ? (<Typography variant="body2" color="textSecondary" >
+                              
                                     <span className="text-muted">URL: </span>                               
                                     <Link
                                         target=" _blank"
                                         className="px-0 btn btn-sm text-muted"
-                                        href={prod.item.url} onClick={(e) => {
-                                        }}>
+                                        href={prod.item.url}>
                                         {prod.item.url}
                                     </Link>
-                                </Typography>
+                                </Typography>) : null}
 
+                                {prod.socialList.length ? (<div ariant="body2" className="socialmedia-list">
+                                    <SocialMedia socialList={prod.socialList}/>
+                                </div>) : null}
 
                             </Grid>
 
@@ -120,7 +122,7 @@ const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
                                         to={prod.baseUrl}
                                         exact>
                                         Back to Exchanges
-                                </NavLink>
+                                    </NavLink>
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -132,8 +134,3 @@ const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
 })
 
 export default withRouter(withProduct(ProductDetail))
-
-/*
-Included in those details should be the name, country, trust rank, logo, year of establishment, social media links, description, and a back-to-main-page button.
-
-* */

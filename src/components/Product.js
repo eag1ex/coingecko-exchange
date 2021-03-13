@@ -7,11 +7,9 @@ import Typography from '@material-ui/core/Typography'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import { observer } from "mobx-react-lite"
 import Link from '@material-ui/core/Link'
-import clsx from 'clsx'
-import Badge from '@material-ui/core/Badge'
-import { ProductModel } from './Models'
-import { log, onerror,copy } from 'x-utils-es'
+import { ProductModel } from '../pages/Models'
 import { NavLink } from "react-router-dom"
+import TrendingUpIcon from '@material-ui/icons/TrendingUp'
 const useStyles = makeStyles((theme) => ({
     margin: {
         margin: theme.spacing(1)
@@ -34,23 +32,18 @@ const useStyles = makeStyles((theme) => ({
         maxWidth: '100%',
         maxHeight: '100%'
     },
-    shape: {
-        backgroundColor: theme.palette.primary.secondary,
-        width: 12,
-        height: 12,
-        marginRight: '5px'
-    },
-    shapeCircle: {
-        borderRadius: '50%'
+    listGoup: {
+        '& li': {
+            border: 'none'
+        }
     }
+
 }))
   
-const Product = observer(({ mobxstore, item,history }) => {
+const Product = observer(({ mobxstore, item, history }) => {
     const baseUrl = '/app/exchanges'
-    const prod = new ProductModel('Product',item,baseUrl )
+    const prod = new ProductModel('Product', item, baseUrl)
     const classes = useStyles()
-  
-    const Circle = (prop) => (<div className={clsx(classes.shape, classes.shapeCircle)}><p className="text-secondary pt-1 small strong ">{prop.rank}&nbsp;&nbsp;</p></div>)
 
     return (
         <div className={classes.root}>
@@ -83,20 +76,22 @@ const Product = observer(({ mobxstore, item,history }) => {
                             <Grid item className="my-0">
                             
                                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
-                                <NavLink
-                                    className="btn btn-sm btn-secondary text-white"
-                                    activeClassName="is-active"
-                                    to={prod.detailUrl}
-                                    exact>
+                                    <NavLink
+                                        className="btn btn-sm btn-secondary text-white"
+                                        activeClassName="is-active"
+                                        to={prod.detailUrl}
+                                        exact>
                                     Detail
-                                </NavLink>
+                                    </NavLink>
                                 </Typography>
                             </Grid>
                         </Grid>
-                        <Grid item>
-                            <Badge color="primary" overlap="circle" badgeContent=" " variant="dot">
-                                <Circle rank={prod.item.trust_score_rank}/>
-                            </Badge>
+                        
+                        <Grid item className={classes.listGoup}>
+                            <ul className="list-group list-group-horizontal p-0">
+                                <li className="list-group-item py-0 pl-0 pr-1 mt-1">{prod.item.trust_score_rank}</li>
+                                <li className="list-group-item p-0 "><TrendingUpIcon fontSize="small" color="primary" /></li>
+                            </ul>                                    
                         </Grid>
                     </Grid>
                 </Grid>

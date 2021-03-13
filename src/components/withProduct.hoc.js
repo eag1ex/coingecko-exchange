@@ -1,8 +1,8 @@
 
 import React from 'react'
 import { useParams } from "react-router-dom"
-import LinearProgress from '@material-ui/core/LinearProgress';
-import Message from '../components/Messages'
+import LinearProgress from '@material-ui/core/LinearProgress'
+import Message from './Messages'
 import { log } from 'x-utils-es'
 const onReadyHoc = (Component) => {
 
@@ -20,13 +20,12 @@ const onReadyHoc = (Component) => {
             }
         }, [prod, productID, mobxstore.fetch_exchangeProduct])
 
-
         if (mobxstore.state === 'ready') {
             return (<Component {...props} />)
         }
 
         if (mobxstore.state === 'pending') {
-            return ( <div className=" mt-5"><LinearProgress /></div>)
+            return (<div className="mt-5 row"><div className="col-8 m-auto"><LinearProgress /></div></div>)
         }
 
         if (mobxstore.state === 'error') {

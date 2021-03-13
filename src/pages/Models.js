@@ -1,5 +1,5 @@
 import { makeObservable, observable, action, observe, runInAction, configure } from "mobx"
-import { log, onerror,copy } from 'x-utils-es'
+import { log, onerror, copy } from 'x-utils-es'
 
 configure({
     enforceActions: "never"
@@ -11,7 +11,7 @@ export class ProductModel {
     status = '' // [pending,error,ready]
     baseUrl=''
 
-    constructor(entity='',item = {}, baseUrl) {
+    constructor(entity = '', item = {}, baseUrl) {
         makeObservable(this, {
             item: observable,
             onClick: action
@@ -22,8 +22,19 @@ export class ProductModel {
        
     }
 
-    get detailUrl(){
-        return `${this.baseUrl}/${this.item.id}`
+    get detailUrl() {
+        return `${this.baseUrl}/product/${this.item.id}`
+    }
+
+    /**
+     * Get a list of formated social media items `[{name,type,url},...]`
+     *
+     * @readonly
+     * @memberof ProductModel
+     */
+    get socialList() {
+        return [this.item.facebook_url ? { name: 'Facebook', type: 'facebook', url: this.item.facebook_url } : null, this.item.twitter_handle ? { name: 'Twitter', type: 'twitter', url: `http://twitter.com/${this.item.twitter_handle}` } : null, this.item.telegram_url ? { name: 'Telegram', type: 'telegram', url: this.item.telegram_url } : null
+        ].filter(n => !!n)
     }
 
     onClick(d) {

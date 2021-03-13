@@ -1,15 +1,26 @@
 import React from "react"
 import { observer } from "mobx-react-lite"
-import LinearProgress from '@material-ui/core/LinearProgress';
+import LinearProgress from '@material-ui/core/LinearProgress'
 import Message from './Messages'
-
-const withStoreReady = (Component,entity) => {
+import { useParams } from "react-router-dom"
+import { log } from 'x-utils-es'
+const withStoreReady = (Component, entity) => {
     const Hoc = observer((props) => {
-
         const { mobxstore } = props
+        const { page } = useParams()
+        const [pg, setPage] = React.useState(null)
+
+        React.useEffect(() => {
+            if (pg === null) {               
+                mobxstore.fetch_exchanges({ page, per_page: mobxstore.pagedPerPage }).then(n => {
+                    setPage(page)
+                })
+            }
+        }, [page, pg, mobxstore.pagedPerPage, mobxstore.fetch_exchanges])
+
         if (mobxstore.state === 'error') return (<Message type='error' value='No data from server' />) 
         if (mobxstore.state === 'ready') return (<Component {...props}/>)
-        else return (<div className=" mt-5"><LinearProgress /></div>)
+        else return (<div className="mt-5 row"><div className="col-8 m-auto"><LinearProgress /></div></div>)
     })
     return Hoc
 }

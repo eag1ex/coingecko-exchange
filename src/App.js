@@ -7,7 +7,7 @@ import Navbar from "./components/Navbar"
 import Exchange from "./pages/Exchange"
 import ProductDetail from "./pages/ProductDetail"
 import Message from './components/Messages'
-import { loggerSetting, log,delay } from 'x-utils-es'
+import { loggerSetting, log, delay } from 'x-utils-es'
 
 if (process.env.NODE_ENV === 'production') {
     loggerSetting('log', 'off')
@@ -18,13 +18,12 @@ if (process.env.NODE_ENV === 'development') {
     log('IN_DEVELOPMENT_MODE')
 }
 
-
 const mobxstore = new MobxStore()
-function App({history}) {
+function App() {
 
     const [routeName, setRouteName] = React.useState({})
-    const onRouteChange = (routeName, second) => {
-        setRouteName({first:routeName,second})
+    const onRouteChange = (first, second) => {
+        setRouteName({ first, second })
     }
  
     return (
@@ -36,31 +35,43 @@ function App({history}) {
 
                     <Switch>
                     
-                        <Route exact exact path="/" render={(props) => {
-                            return (<Redirect to="/app/exchanges/"/> )                          
-                        }}/> 
-                        <Route exact path="/exchanges" render={(props) => {
-                            return (<Redirect to="/app/exchanges/"/> )                          
+                        <Route exact path="/" render={(props) => {
+                            return (<Redirect to="/app/exchanges/paged/1"/>)                          
                         }}/> 
 
-                         <Route exact path="/app" render={(props) => {
-                            return (<Redirect to="/app/exchanges/"/> )                          
+                        <Route exact path="/exchanges" render={(props) => {
+                            return (<Redirect to="/app/exchanges/paged/1"/>)                          
                         }}/> 
-      
-                        <Route exact path="/app/:name">
-                            <Exchange mobxstore={mobxstore} onRouteChange={(name) => onRouteChange(name)} />
+
+                        <Route exact path="/app/exchanges/">
+                            <Redirect to="/app/exchanges/paged/1"/>
+                        </Route>
+
+                        <Route exact path="/app/exchanges/paged/">
+                            <Redirect to="/app/exchanges/paged/1"/>
+                        </Route>
+
+                        <Route exact path="/app/exchanges/product/">
+                            <Redirect to="/app/exchanges/paged/1"/>
+                        </Route>
+
+                        <Route exact path="/app" render={(props) => {
+                            return (<Redirect to="/app/exchanges/paged/1"/>)                          
+                        }}/> 
+
+                        <Route exact path="/app/:name/paged/:page">
+                            <Exchange mobxstore={mobxstore} onRouteChange={(first) => onRouteChange(first)} />
                         </Route>  
  
-                        <Route exact path="/app/:name/:productID">
-                            <ProductDetail mobxstore={mobxstore} onRouteChange={(name,product) => onRouteChange('exchanges',product)} />
+                        <Route exact path="/app/:name/product/:productID">
+                            <ProductDetail mobxstore={mobxstore} onRouteChange={(name, second) => onRouteChange('exchanges', second)} />
                         </Route>
-  
           
                         <Route exact path="/error" render={(props) => {          
                             return (<Message type='error' value='Ups something went wrong' />)
                         }}/>                
                            
-                        <Route  exact path="/product/error" render={(props) => {          
+                        <Route exact path="/product/error" render={(props) => {          
                             return (<Message type='error' value='Product not found' />)
                         }}/>                
                     </Switch>    

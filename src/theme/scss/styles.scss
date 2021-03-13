@@ -27,3 +27,11 @@ body {
         color: $white;
     }
 }
+
+.cf {
+    &::after {
+      display: block;
+      clear: both;
+      content: "";
+    }
+  }

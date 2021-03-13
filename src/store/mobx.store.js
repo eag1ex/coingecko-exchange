@@ -8,37 +8,59 @@ export class MobxStore {
     state = "pending" // "pending", "ready", "error",
     exchanges = []
     productDetail={}
+
+    // caching same requests
     cachedProducts={}
+    cachedExchangePaged={}
+
     apiBase = api.base
+    pagedPerPage = 10
+
     constructor() {
         makeObservable(this, {
             state: observable,
-            productDetail:observable,
+            productDetail: observable
             // exchanges: observable
-        })
-
-        runInAction(() => {
-            this.fetch_exchanges(10)
         })
 
     }
 
-    fetch_exchanges(paged) {
+    /**
+     *
+     * Fetch is controlled via withStore.hoc component before the page loads
+     * Caching results on subsequent calls to same route
+     * @param {*} params
+     * @returns
+     * @memberof MobxStore
+     */
+    fetch_exchanges(params) {
+        if (!params.page) params.page = 1
+        
+        if (this.cachedExchangePaged[params.page]) {
+
+            runInAction(() => {
+                log('[exchanges][paged][cached]')
+                this.exchanges = this.cachedExchangePaged[params.page]
+            })   
+                  
+            return Promise.resolve(this.cachedExchangePaged[params.page])
+        }
 
         this.state = 'pending'
         this.exchanges = []
+        debug('[fetch]', api.exchanges(params))
 
-        debug('[fetch]', api.exchanges())
-
-        return fetch(api.exchanges((paged ? { per_page: paged } : {})), {
+        return fetch(api.exchanges(params), {
             method: 'GET', headers: { 'Content-Type': 'application/json;charset=utf-8' }
         }).then(fetchHandler)
             .then((response) => {
 
                 runInAction(() => {
                     this.exchanges = response || []
+
                     this.exchanges.sort((a, b) => b.trust_score_rank - a.trust_score_rank)
                     this.state = "ready"
+                    this.cachedExchangePaged[params.page] = response
                     log('[exchanges]', this.exchanges)
                 })
 
@@ -52,11 +74,20 @@ export class MobxStore {
             })
     }
 
+    /**
+     * Fetch is controlled via withProduct.hoc component before the page loads
+     * Caching results on subsequent calls to same route
+     * @param {*} id
+     * @returns
+     * @memberof MobxStore
+     */
     fetch_exchangeProduct(id) {
 
-        if(this.cachedProducts[id]){
-            this.productDetail = this.cachedProducts[id]
-            log('[productDetail][cached]')
+        if (this.cachedProducts[id]) {
+            runInAction(() => {
+                this.productDetail = this.cachedProducts[id]
+                log('[productDetail][cached]')
+            })       
             return Promise.resolve(this.cachedProducts[id])
         }
 
@@ -70,9 +101,9 @@ export class MobxStore {
             .then((response) => {
 
                 runInAction(() => {
-                    this.productDetail = response || {}
-                    this.cachedProducts[id] = response
+                    this.productDetail = response || {}                 
                     this.state = "ready"
+                    this.cachedProducts[id] = response
                     log('[productDetail]', this.productDetail)
                 })
 
@@ -84,6 +115,4 @@ export class MobxStore {
                 onerror('[fetch_exchangeProduct]', err)
             })
     }
-
-
 }

@@ -1,22 +1,23 @@
 import "@scss/pages/home.component.scss"
-import React,{comp} from 'react'
+import React from 'react'
 import withStoreReady from '../components/withStore.hoc'
 import { useParams } from "react-router-dom"
-import Product from './Product'
-import { NavLink, withRouter } from "react-router-dom"
-
+import Product from '../components/Product'
+import { withRouter } from "react-router-dom"
+import Pagination from '../components/Pagination'
+import { log, onerror, copy } from 'x-utils-es'
 function Exchange(props) {
-    const { mobxstore, onRouteChange } = props 
-    const { name } = useParams()
+    const { mobxstore, onRouteChange, history } = props 
+    const { name, page } = useParams()
 
     const [didLoad, setDidLoad] = React.useState(false)
-
+    console.log('paged:', page)
     React.useEffect(() => {
         if (!didLoad) {
             onRouteChange(name)    
             setDidLoad(true)
         }
-    }, [didLoad, onRouteChange,name])
+    }, [didLoad, onRouteChange, name])
 
     return (
         <div id="home-wrap">
@@ -37,8 +38,11 @@ function Exchange(props) {
                    
                 </div>
             </div>
+            <Pagination history={history} perPage={mobxstore.pagedPerPage} routeOnChange={(page) => {
+                log('route on change', page)
+            }}/>
         </div>
     )
 }
 
-export default withRouter(withStoreReady(Exchange,'exchange'))
+export default withRouter(withStoreReady(Exchange, 'exchange'))
