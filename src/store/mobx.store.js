@@ -5,23 +5,20 @@ import { api } from './api'
 Object.freeze(api) // no mods please!
 
 export class MobxStore {
-    state = "pending" // "pending", "ready", "error",
+    state = "pending" // "pending", "ready", "error"
     exchanges = []
     productDetail={}
-    pageRoute = 1
     // caching same requests
     cachedProducts={}
     cachedExchangePaged={}
-
     apiBase = api.base
     pagedPerPage = 10
 
     constructor() {
         makeObservable(this, {
             state: observable,
-            pageRoute: observable,
-            productDetail: observable
-            // exchanges: observable
+            productDetail: observable,
+            exchanges: observable
         })
 
     }
@@ -42,7 +39,6 @@ export class MobxStore {
             runInAction(() => {
                 log('[exchanges][paged][cached]')
                 this.exchanges = this.cachedExchangePaged[params.page]
-                this.pageRoute = params.page
             })   
 
             return Promise.resolve(this.cachedExchangePaged[params.page])
@@ -66,7 +62,6 @@ export class MobxStore {
                     this.exchanges.sort((a, b) => b.trust_score_rank - a.trust_score_rank)
                     this.state = "ready"
                     this.cachedExchangePaged[params.page] = response
-                    this.pageRoute = params.page
                     log('[exchanges]', this.exchanges)
                 })
 
@@ -81,8 +76,7 @@ export class MobxStore {
                      
                 } else {
                     onerror('[fetch_exchanges]', err)
-                }
-                 
+                }               
             })
     }
 
@@ -105,7 +99,7 @@ export class MobxStore {
 
         this.state = 'pending'
         this.productDetail = {}
-        debug('[fetch]', api.exchanges())
+        debug('[fetch]', api.exchangesProduct(id))
 
         return fetch(api.exchangesProduct(id), {
             method: 'GET',

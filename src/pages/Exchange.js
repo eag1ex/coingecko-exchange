@@ -5,7 +5,8 @@ import { useParams } from "react-router-dom"
 import Product from '../components/Product'
 import { withRouter } from "react-router-dom"
 import Pagination from '../components/Pagination'
-import { log, onerror, copy } from 'x-utils-es'
+import { log } from 'x-utils-es'
+
 function Exchange(props) {
     const { mobxstore, onRouteChange, history } = props 
     const { name, page } = useParams()
@@ -32,11 +33,10 @@ function Exchange(props) {
 
             <div className="row">
                 <div className="col-sm-12 col-md-7 m-auto p-4">
-                    <React.Fragment>
-                        {(mobxstore.exchanges || []).length ? mobxstore.exchanges.map((item, inx) => {
-                            return (<Product key={inx} item={item} mobxstore={mobxstore} page={page}/>)
-                        }) : 'no exchanges available yet!'}
-                    </React.Fragment>
+                   
+                    {(mobxstore.exchanges || []).length ? mobxstore.exchanges.map((item, inx) => {
+                        return (<Product key={inx} item={item} mobxstore={mobxstore} page={page}/>)
+                    }) : 'no exchanges available yet!'}
                    
                 </div>
             </div>

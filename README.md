@@ -30,6 +30,11 @@ Opens in http://localhost:3000/
 Application stack: `React v16, Mobx v6, es6, MVC, React Material (configurable), Bootstrap (configurable), x-utils-es, Javascript`
 
 
+#### Tests
+First you need to install test:tools, run `npm run test:tools:install`
+
+
+
 #### Code Hierarchy
 - App
 
@@ -46,6 +51,11 @@ Application stack: `React v16, Mobx v6, es6, MVC, React Material (configurable),
 #### Api
 Refer to : `https://www.coingecko.com/api/documentations/v3#/`
 
+
+
+#### Troubleshooting
+Having issues with fetch, taking too long to load the results, in chrome on windows just run this in Command Prompt CLI:
+`C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:\temp`
 
 #### Create-react-app readme:
 To know more about `npx create-react-app my-app` please read on here:

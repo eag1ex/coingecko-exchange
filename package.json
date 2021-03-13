@@ -10,7 +10,8 @@
     "eject": "react-app-rewired eject",
     "lint:install": "npm i babel-eslint eslint eslint-plugin-node eslint-plugin-standard eslint-plugin-promise@latest --save-dev",
     "lint": "./node_modules/.bin/eslint  --ext .js src",
-    "lint:fix": "./node_modules/.bin/eslint --fix --ext .js src"
+    "lint:fix": "./node_modules/.bin/eslint --fix --ext .js src",
+    "test:tools:install": "npm i enzyme enzyme-adapter-react-16 enzyme-to-json react-test-renderer --save-dev"
   },
   "author": "",
   "license": "CC BY-NC-ND",
@@ -31,6 +32,10 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "x-utils-es": "^1.6.1"
+  },
+  "jest": {
+    "verbose": true,
+    "testMatch": ["**/tests/**/*.[jt]s?(x)","**/?(*.)+(spec|test).[jt]s?(x)" ]
   },
   "engineStrict": true,
   "engines": {
@@ -59,12 +64,16 @@
     "@babel/preset-env": "^7.13.9",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.1",
     "eslint": "^6.8.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-standard": "^5.0.0",
     "react-app-rewire-alias": "^1.0.1",
-    "react-app-rewired": "^2.1.8"
+    "react-app-rewired": "^2.1.8",
+    "react-test-renderer": "^17.0.1"
   }
 }

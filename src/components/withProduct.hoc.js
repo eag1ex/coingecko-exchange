@@ -3,7 +3,7 @@ import React from 'react'
 import { useParams } from "react-router-dom"
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Message from './Messages'
-import { log } from 'x-utils-es'
+import { log, delay } from 'x-utils-es'
 const onReadyHoc = (Component) => {
 
     const Hoc = (props) => {
@@ -14,8 +14,7 @@ const onReadyHoc = (Component) => {
         React.useEffect(() => {
             if (prod === null) {
                 mobxstore.fetch_exchangeProduct(productID).then(n => {
-                    setProd(productID)
-                    log('calling fetch_exchangeProduct')
+                    setProd(productID)                
                 })
             }
         }, [prod, productID, mobxstore.fetch_exchangeProduct])
