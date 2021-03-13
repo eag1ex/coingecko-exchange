@@ -8,6 +8,11 @@ const withStoreReady = (Component, entity) => {
     const Hoc = observer((props) => {
         const { mobxstore } = props
         const { page } = useParams()
+
+        if (isNaN(Number(page))) {
+            return (<Message type='error' value='Invalid exchange page' link='exchanges'/>) 
+        }
+
         const [pg, setPage] = React.useState(null)
         React.useEffect(() => {
             if (pg === null || pg !== page) {               

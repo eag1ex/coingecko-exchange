@@ -21,7 +21,7 @@ export default function PaginationBottom(props) {
     }
 
     return ( 
-        <div className={classes.root + ' row'}>
+        <div data-testid="pagination" className={classes.root + ' row'}>
             <div className="col-12 mt-1 mb-5">
                 <Pagination className="d-flex justify-content-center" page={(pageState || page)} count={perPage} variant="outlined" shape="rounded" onChange={ handleChange}/>
             </div>       

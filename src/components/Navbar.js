@@ -5,9 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
-import { delay, log } from 'x-utils-es/umd'
-import Chip from '@material-ui/core/Chip'
-import TagFacesIcon from '@material-ui/icons/TagFaces'
 import { NavLink, withRouter } from "react-router-dom"
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -21,30 +18,30 @@ const useStyles = makeStyles((theme) => ({
     }
 }))
 
-function Nav({ history, routeName }) {
-
-    let Links = (props) => {
-        const { first, second } = props
-        let { name, route } = first || {}
-        return (<React.Fragment>
-            {route && !second ? (<NavLink
+let Links = (props) => {
+    const { first, second } = props
+    let { name, route } = first || {}
+    return (<React.Fragment>
+        {route && !second ? (<NavLink
+            className="btn btn-sm btn-secondary text-white py-0 px-0"
+            activeClassName="is-active"
+            to={route}
+            exact>
+            {name.toUpperCase()}</NavLink>)
+            : route && second ? (<><NavLink
+                className="btn btn-sm btn-secondary text-white py-0 px-0"
+                to={(route + '/' + second)}
+                exact>
+                {name.toUpperCase()}</NavLink>&nbsp;/&nbsp;<NavLink
                 className="btn btn-sm btn-secondary text-white py-0 px-0"
                 activeClassName="is-active"
-                to={route}
+                to={second}
                 exact>
-                {name.toUpperCase()}</NavLink>) 
-                : route && second ? (<><NavLink
-                    className="btn btn-sm btn-secondary text-white py-0 px-0"
-                    to={(route + '/' + second)}
-                    exact>
-                    {name.toUpperCase()}</NavLink>&nbsp;/&nbsp;<NavLink
-                    className="btn btn-sm btn-secondary text-white py-0 px-0"
-                    activeClassName="is-active"
-                    to={second}
-                    exact>
-                    {second.toUpperCase()}</NavLink></>) : null}
-        </React.Fragment>)
-    }
+                {second.toUpperCase()}</NavLink></>) : null}
+    </React.Fragment>)
+}
+
+function Nav({ routeName }) {
 
     const classes = useStyles()
 

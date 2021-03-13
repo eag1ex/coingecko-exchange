@@ -1,11 +1,18 @@
 /* eslint-disable no-undef */
-import React from "react"
-import { shallow, mount } from "enzyme"
-// import Account from "./Account"
-import App from "../App"
-import toJson from "enzyme-to-json"
+import { loggerSetting } from 'x-utils-es'
+// disable any loggind in testing
+loggerSetting('log', 'off')
+loggerSetting('debug', 'off')
 
-it("renders correctly", () => {
-    const wrapper = mount(<App />)
-    expect(wrapper.state("error")).toEqual(null)
+import React from 'react'
+import { render, cleanup } from '@testing-library/react'
+import App from '../App'
+
+describe('Take a snapshot', () => {
+    afterEach(cleanup)
+    it('<App/> should take a snapshot', () => {
+        const { asFragment } = render(<App />)
+    
+        expect(asFragment(<App />)).toMatchSnapshot()
+    })
 })

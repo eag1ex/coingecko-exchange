@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom"
 import Product from '../components/Product'
 import { withRouter } from "react-router-dom"
 import Pagination from '../components/Pagination'
-import { log } from 'x-utils-es'
+import { log } from 'x-utils-es/esm'
 
 function Exchange(props) {
     const { mobxstore, onRouteChange, history } = props 
@@ -15,15 +15,14 @@ function Exchange(props) {
    
     React.useEffect(() => {
         if (!didLoad) {
-            let rName = name + '/' + page
-            // console.log('name/page:', rName)
-            onRouteChange({ name, page, route: rName })    
+            let rName = name + '/' + page       
             setDidLoad(true)
+            onRouteChange({ name, page, route: rName })   
         }
     }, [didLoad, onRouteChange, page, name])
 
     return (
-        <div id="home-wrap">
+        <div data-testid="exchange-wrap" id="exchange-wrap">
             <div className="row">
                 <div className="col-sm-12 col-md-8 m-auto ">
                     <div className="d-flex justify-content-center align-items-center m-auto">
@@ -40,9 +39,10 @@ function Exchange(props) {
                    
                 </div>
             </div>
-            <Pagination pageState={Number(page)} history={history} perPage={mobxstore.pagedPerPage} routeOnChange={(page) => {
-                log('route on change', page)
-            }}/>
+            <Pagination 
+                pageState={Number(page)} history={history} perPage={mobxstore.pagedPerPage} routeOnChange={(page) => {
+                    log('route on change', page)
+                }}/>
         </div>
     )
 }

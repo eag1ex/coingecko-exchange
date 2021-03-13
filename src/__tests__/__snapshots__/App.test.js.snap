@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Take a snapshot <App/> should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="makeStyles-root-1 navbar"
+  >
+    <header
+      class="MuiPaper-root MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary MuiPaper-elevation4"
+    >
+      <div
+        class="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+      >
+        <button
+          aria-label="menu"
+          class="MuiButtonBase-root MuiIconButton-root makeStyles-menuButton-2 MuiIconButton-colorInherit MuiIconButton-edgeStart"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+        <h6
+          class="MuiTypography-root makeStyles-title-3 MuiTypography-h6"
+        />
+      </div>
+    </header>
+  </div>
+  <div
+    class="container-fluid mt-3"
+  >
+    <div
+      class="mt-5 row"
+    >
+      <div
+        class="col-8 m-auto"
+      >
+        <div
+          class="MuiLinearProgress-root MuiLinearProgress-colorPrimary MuiLinearProgress-indeterminate"
+          role="progressbar"
+        >
+          <div
+            class="MuiLinearProgress-bar MuiLinearProgress-barColorPrimary MuiLinearProgress-bar1Indeterminate"
+          />
+          <div
+            class="MuiLinearProgress-bar MuiLinearProgress-bar2Indeterminate MuiLinearProgress-barColorPrimary"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

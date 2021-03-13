@@ -37,7 +37,6 @@ const useStyles = makeStyles((theme) => ({
             border: 'none'
         }
     }
-
 }))
   
 const Product = observer(({ mobxstore, item, history, page }) => {
@@ -46,7 +45,7 @@ const Product = observer(({ mobxstore, item, history, page }) => {
     const classes = useStyles()
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root + ' product-item'}>
             <Paper className={classes.paper}>
                 <Grid container spacing={2}>
                     <Grid item >
@@ -77,7 +76,7 @@ const Product = observer(({ mobxstore, item, history, page }) => {
                             
                                 <Typography variant="body2" style={{ cursor: 'pointer' }}>
                                     <NavLink
-                                        className="btn btn-sm btn-secondary text-white"
+                                        className="btn btn-sm btn-secondary text-white detail-link"
                                         activeClassName="is-active"
                                         to={prod.detailUrl}
                                         exact>

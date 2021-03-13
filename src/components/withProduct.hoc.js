@@ -3,12 +3,11 @@ import React from 'react'
 import { useParams } from "react-router-dom"
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Message from './Messages'
-import { log, delay } from 'x-utils-es'
 const onReadyHoc = (Component) => {
 
     const Hoc = (props) => {
         const { productID } = useParams()
-        const { mobxstore, history } = props
+        const { mobxstore } = props
         const [prod, setProd] = React.useState(null)
 
         React.useEffect(() => {
@@ -28,7 +27,7 @@ const onReadyHoc = (Component) => {
         }
 
         if (mobxstore.state === 'error') {
-            return (<Message type="error" value="Ups could not load this page" />)
+            return (<Message type="error" value="Invalid product page" link="exchanges"/>)
         }
     }
 

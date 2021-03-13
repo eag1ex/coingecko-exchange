@@ -6,7 +6,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development react-scripts start",
     "build": "cross-env NODE_ENV=production react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --colors",
     "eject": "react-scripts eject",
     "lint:install": "npm i babel-eslint eslint eslint-plugin-node eslint-plugin-standard eslint-plugin-promise@latest --save-dev",
     "lint": "./node_modules/.bin/eslint  --ext .js src",
@@ -16,6 +16,11 @@
   "author": "",
   "license": "CC BY-NC-ND",
   "private": true,
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!x-utils-es)"
+    ]
+  },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
@@ -32,9 +37,6 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
     "x-utils-es": "^1.6.1"
-  },
-  "jest": {
-    "verbose": true
   },
   "engineStrict": true,
   "engines": {
@@ -72,6 +74,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-standard": "^5.0.0",
     "react-app-rewire-alias": "^1.0.1",
-    "react-test-renderer": "^17.0.1"
+    "react-test-renderer": "^17.0.1",
+    "sinon": "^9.2.4"
   }
 }

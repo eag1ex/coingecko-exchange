@@ -39,19 +39,23 @@ function App() {
                             <Redirect to="/app/exchanges/1"/>
                         </Route>
 
-                        <Route exact path="/exchanges">
+                        <Route exact path="/app">
                             <Redirect to="/app/exchanges/1"/>
                         </Route>
 
-                        <Route exact path="/exchanges/:name">
+                        <Route exact path="/app/exchange">
+                            <Redirect to="/app/exchanges/1"/>
+                        </Route>   
+
+                        <Route exact path="/exchanges">
                             <Redirect to="/app/exchanges/1"/>
                         </Route>
 
                         <Route exact path="/app/exchanges/">
                             <Redirect to="/app/exchanges/1"/>
                         </Route>
-
-                        <Route exact path="/app">
+                        
+                        <Route exact path="/exchanges/:name">
                             <Redirect to="/app/exchanges/1"/>
                         </Route>
 
@@ -61,15 +65,8 @@ function App() {
  
                         <Route exact path="/app/:name/:page/:productID">
                             <ProductDetail mobxstore={mobxstore} onRouteChange={(first, second) => onRouteChange(first, second)} />
-                        </Route>
-          
-                        <Route exact path="/error" render={(props) => {          
-                            return (<Message type='error' value='Ups something went wrong' />)
-                        }}/>                
-                           
-                        <Route exact path="/product/error" render={(props) => {          
-                            return (<Message type='error' value='Product not found' />)
-                        }}/>                
+                        </Route>              
+                     
                     </Switch>    
 
                 </div>

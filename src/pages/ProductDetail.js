@@ -64,7 +64,7 @@ const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
     const classes = useStyles()
 
     return (
-        <div className={classes.root + ' mt-5'}>
+        <div className={classes.root + ' mt-5'} data-testid="product-detail">
             <Paper className={classes.paper}>
                 <Grid container spacing={2}>
                     <Grid item >
