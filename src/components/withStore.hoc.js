@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite"
 import LinearProgress from '@material-ui/core/LinearProgress'
 import Message from './Messages'
 import { useParams } from "react-router-dom"
-import { log } from 'x-utils-es'
 const withStoreReady = (Component, entity) => {
     const Hoc = observer((props) => {
         const { mobxstore } = props

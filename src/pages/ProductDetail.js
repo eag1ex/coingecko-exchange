@@ -59,7 +59,7 @@ const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
             onRouteChange(first, productID)
             setDidLoad(true)
         }
-    }, [didLoad, onRouteChange, name, page])
+    }, [didLoad, onRouteChange, name, page, productID])
 
     const classes = useStyles()
 

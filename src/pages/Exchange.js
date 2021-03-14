@@ -22,7 +22,7 @@ function Exchange(props) {
     }, [didLoad, onRouteChange, page, name])
 
     return (
-        <div data-testid="exchange-wrap" id="exchange-wrap">
+        <div data-testid={(`exchange-wrap-page-${page}`)} id="exchange-wrap">
             <div className="row">
                 <div className="col-sm-12 col-md-8 m-auto ">
                     <div className="d-flex justify-content-center align-items-center m-auto">

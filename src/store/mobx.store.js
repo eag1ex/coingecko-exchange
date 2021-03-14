@@ -1,6 +1,6 @@
-import { action, observable, makeObservable, observe, runInAction } from "mobx"
+import { observable, makeObservable, runInAction } from "mobx"
 import { fetchHandler, timeoutHandler } from '../utils'
-import { isEmpty, debug, log, onerror } from 'x-utils-es'
+import { debug, log, onerror } from 'x-utils-es'
 import { api } from './api'
 Object.freeze(api) // no mods please!
 
@@ -34,17 +34,28 @@ export class MobxStore {
     fetch_exchanges(params) {
         if (!params.page) params.page = 1
         
+        this.state = 'pending'  
+ 
+        if (isNaN(Number(params.page))) { 
+
+            return Promise.reject('fetch_exchanges wrong page provided').catch(err => {
+                runInAction(() => {
+                    this.state = "error"
+                })
+            })
+        }
+        
         if (this.cachedExchangePaged[params.page]) {
 
             runInAction(() => {
                 log('[exchanges][paged][cached]')
                 this.exchanges = this.cachedExchangePaged[params.page]
+                this.state = 'ready'
             })   
 
             return Promise.resolve(this.cachedExchangePaged[params.page])
         }
-
-        this.state = 'pending'
+    
         this.exchanges = []
         debug('[fetch]', api.exchanges(params))
 
@@ -55,7 +66,6 @@ export class MobxStore {
             signal: timeoutHandler(5000).signal
         }).then(fetchHandler)
             .then((response) => {
-
                 runInAction(() => {
                     this.exchanges = response || []
 
@@ -110,19 +120,20 @@ export class MobxStore {
             .then((response) => {
 
                 runInAction(() => {
-                    this.productDetail = response || {}                 
-                    this.state = "ready"
+                    this.productDetail = response || {}                               
                     this.cachedProducts[id] = response
+                    this.state = "ready"
                     log('[productDetail]', this.productDetail)
                 })
 
             }).catch(err => {
 
-                runInAction(() => {
-                    this.state = "error"
-                })
+                // runInAction(() => {
+                this.state = "error"
+                // })
+
                 if (err instanceof DOMException) {
-                    onerror('[fetch_exchanges]', err.toString())
+                    onerror('[fetch_exchangeProduct]', err.toString())
                 } else {
                     onerror('[fetch_exchangeProduct]', err)
                 }

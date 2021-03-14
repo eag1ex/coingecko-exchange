@@ -6,8 +6,7 @@ import { MobxStore } from './store'
 import Navbar from "./components/Navbar"
 import Exchange from "./pages/Exchange"
 import ProductDetail from "./pages/ProductDetail"
-import Message from './components/Messages'
-import { loggerSetting, log, delay } from 'x-utils-es'
+import { loggerSetting, log } from 'x-utils-es'
 
 if (process.env.NODE_ENV === 'production') {
     loggerSetting('log', 'off')
@@ -43,7 +42,7 @@ function App() {
                             <Redirect to="/app/exchanges/1"/>
                         </Route>
 
-                        <Route exact path="/app/exchange">
+                        {/* <Route exact path="/app/exchange">
                             <Redirect to="/app/exchanges/1"/>
                         </Route>   
 
@@ -53,7 +52,7 @@ function App() {
 
                         <Route exact path="/app/exchanges/">
                             <Redirect to="/app/exchanges/1"/>
-                        </Route>
+                        </Route> */}
                         
                         <Route exact path="/exchanges/:name">
                             <Redirect to="/app/exchanges/1"/>

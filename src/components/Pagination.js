@@ -16,14 +16,15 @@ export default function PaginationBottom(props) {
     const [page, setPage] = React.useState(1)
     const handleChange = (env, value) => {    
         setPage(value)   
-        console.log('push?', value)
         history.push({ pathname: `/app/exchanges/${value}` }) 
     }
 
     return ( 
-        <div data-testid="pagination" className={classes.root + ' row'}>
+        <div className={classes.root + ' row'}>
             <div className="col-12 mt-1 mb-5">
-                <Pagination className="d-flex justify-content-center" page={(pageState || page)} count={perPage} variant="outlined" shape="rounded" onChange={ handleChange}/>
+                <Pagination 
+                    data-testid="pagination"
+                    className="d-flex justify-content-center" page={(pageState || page)} count={perPage} variant="outlined" shape="rounded" onChange={ handleChange}/>
             </div>       
         </div>
     )

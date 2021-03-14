@@ -1,5 +1,5 @@
 
-import { isObject, delay, log } from 'x-utils-es'
+import { isObject, delay } from 'x-utils-es'
 
 /**
  * fetch handler if status error reject response
@@ -17,14 +17,13 @@ export const fetchHandler = async (response) => {
         try {
             resp = await response.json() // {message,code,error}
         } catch (err) {
-
             return Promise.reject(err)
         }
 
         // if our server is up we know what to expect, else can return empty string
         if (isObject(resp)) {
             return Promise.reject(resp.error)
-        } else Promise.reject(resp || "HTTP-Error: " + resp.status)
+        } else return Promise.reject(resp || "HTTP-Error: " + resp.status)
     }
 }
 

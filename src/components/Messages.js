@@ -41,7 +41,7 @@ export default function Messages(props) {
     if (!message) return null
 
     return (
-        <div className={classes.root + ' mx-1'} data-testid="message">
+        <div className={classes.root + ' mx-1'} data-testid="message" >
             {type === 'error' ? (<div className="d-flex flex-row justify-content-start align-items-center w-100"><Alert severity="error">{message}</Alert><NavigateToLink link={link || false}/></div>) : type === 'warning' ? (<Alert severity="warning">{message}</Alert>)
                 : type === 'info' ? (<Alert severity="info">{message}</Alert>)
                     : type === 'success' ? (<Alert severity="success">{message}</Alert>) : null}  

@@ -1,5 +1,5 @@
-import { makeObservable, observable, action, observe, runInAction, configure } from "mobx"
-import { log, onerror, copy } from 'x-utils-es'
+import { makeObservable, observable, action, configure } from "mobx"
+import { log, copy } from 'x-utils-es'
 
 configure({
     enforceActions: "never"
