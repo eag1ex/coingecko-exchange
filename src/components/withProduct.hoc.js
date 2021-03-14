@@ -16,7 +16,7 @@ const onReadyHoc = (Component) => {
                     setProd(productID)                
                 })
             }
-        }, [prod, productID, mobxstore.fetch_exchangeProduct])
+        }, [prod, productID, mobxstore])
 
         if (mobxstore.state === 'ready') {
             return (<Component {...props} />)

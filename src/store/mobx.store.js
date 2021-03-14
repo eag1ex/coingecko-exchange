@@ -3,13 +3,12 @@ import { fetchHandler, timeoutHandler } from '../utils'
 import { debug, log, onerror } from 'x-utils-es'
 import { api } from './api'
 Object.freeze(api) // no mods please!
-
 export class MobxStore {
     state = "pending" // "pending", "ready", "error"
     exchanges = []
     productDetail={}
     // caching same requests
-    cachedProducts={}
+    cachedProduct={}
     cachedExchangePaged={}
     apiBase = api.base
     pagedPerPage = 10
@@ -69,9 +68,9 @@ export class MobxStore {
                 runInAction(() => {
                     this.exchanges = response || []
 
-                    this.exchanges.sort((a, b) => b.trust_score_rank - a.trust_score_rank)
-                    this.state = "ready"
+                    this.exchanges.sort((a, b) => b.trust_score_rank - a.trust_score_rank)               
                     this.cachedExchangePaged[params.page] = response
+                    this.state = "ready"
                     log('[exchanges]', this.exchanges)
                 })
 
@@ -98,16 +97,17 @@ export class MobxStore {
      * @memberof MobxStore
      */
     fetch_exchangeProduct(id) {
+        this.state = 'pending'
 
-        if (this.cachedProducts[id]) {
+        if (this.cachedProduct[id]) {
             runInAction(() => {
-                this.productDetail = this.cachedProducts[id]
+                this.productDetail = this.cachedProduct[id]
+                this.state = 'ready'
                 log('[productDetail][cached]')
             })       
-            return Promise.resolve(this.cachedProducts[id])
+            return Promise.resolve(this.cachedProduct[id])
         }
-
-        this.state = 'pending'
+      
         this.productDetail = {}
         debug('[fetch]', api.exchangesProduct(id))
 
@@ -121,7 +121,7 @@ export class MobxStore {
 
                 runInAction(() => {
                     this.productDetail = response || {}                               
-                    this.cachedProducts[id] = response
+                    this.cachedProduct[id] = response
                     this.state = "ready"
                     log('[productDetail]', this.productDetail)
                 })

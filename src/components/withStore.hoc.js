@@ -19,7 +19,7 @@ const withStoreReady = (Component, entity) => {
                     setPage(page)
                 })
             }
-        }, [page, pg, mobxstore.pagedPerPage, mobxstore.fetch_exchanges])
+        }, [page, pg, mobxstore])
 
         if (mobxstore.state === 'error') return (<Message type='error' value='No data from server' />) 
         if (mobxstore.state === 'ready') return (<Component {...props}/>)
