@@ -11,7 +11,7 @@ React with Mobx application showing bitcoin exchanges in a paged list with view 
 - Mobx state handling
 - Tests and Coverage provided
 - React Material and Bootstrap 
-
+- Mobile optimized
 
 #### Install 
 Build in `Node.js 12.0.0` and `NPM 6.9.0` in strict mode, maybe supported on higher but not tested
@@ -58,7 +58,7 @@ Running tests:
 - Store
     - api `(list of available api)`
     - Mobx `(store and state manager)`
-- Theme `(scss and React Material)`
+- Theme `(scss and React Material)` 
 - Utils
 
 
@@ -80,9 +80,6 @@ To know more about `npx create-react-app my-app` please read on here:
 #### Configs
 - Sass/scss: the `.env` file needs to be adjusted depending on your OS environment, as per instructions in: `https://create-react-app.dev/docs/adding-a-sass-stylesheet`
 
-
-#### Notes
-- Not optimized for mobile as yet.
 
 
 ##### LICENSE
