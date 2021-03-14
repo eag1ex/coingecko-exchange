@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { loggerSetting } from 'x-utils-es'
-// disable any loggind in testing
+// disable any logging in testing
 loggerSetting('log', 'off')
 loggerSetting('debug', 'off')
 loggerSetting('error', 'off')
@@ -12,7 +12,7 @@ import SocialMedia from '../components/SocialMedia'
 describe('Test <SocialMedia/> component', () => {
 
     const socialList = () => {
-        return [{ name: 'Facebook', type: 'facebook', url: 'fake_url' }, { name: 'Twitter', type: 'twitter', url: `http://twitter.com/fake_id` }, { name: 'Telegram', type: 'telegram', url: 'fake_url' }].filter(n => !!n)
+        return [{ name: 'Facebook', type: 'facebook', url: 'fake_url' }, { name: 'Twitter', type: 'twitter', url: `http://twitter.com/fake_id` }, { name: 'Telegram', type: 'telegram', url: 'fake_url' }]
     }
 
     afterEach(() => {

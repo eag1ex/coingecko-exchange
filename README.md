@@ -2,13 +2,15 @@
 #### - [ Developed by Eaglex ](http://eaglex.net)
 
 #### About
+React with Mobx application showing bitcoin exchanges in a paged list with view to each bitcoin product detail.
 
-You create your a bucket with any number of tasks, all actions connected to rest api end points
-
-- App page routing support
-- Connected to real api end points
-- Stateless application
+- Using coingecko api, documentation on `https://www.coingecko.com/api/documentations/v3#/`
+- React stateless application
 - Mobx Store
+- App routing
+- Mobx state handling
+- Tests and Coverage provided
+- React Material and Bootstrap 
 
 
 #### Install 
@@ -26,20 +28,28 @@ Opens in http://localhost:3000/
 /$ npm start
 ```
 
+
 #### Stack
 Application stack: `React v16, Mobx v6, es6, MVC, React Material (configurable), Bootstrap (configurable), x-utils-es, Javascript`
 
 
 #### Tests
-First you need to install test:tools, run `npm run test:tools:install`
+Running tests:
+- Test files are located in `./src/__tests__` and `./src/setupTests.js`
+- You can access coverage from `./coverage/lcov-report/index.html`
+- Performing tests requires access to `coingecko api`
 
+```sh
+/$ npm run test # only test
+/$ npm run coverage # runs test with coverage
+```
 
 
 #### Code Hierarchy
 - App
-
+- Components
 - Pages
-    - Home
+    - Exchange
 
 - Store
     - api `(list of available api)`
@@ -49,8 +59,9 @@ First you need to install test:tools, run `npm run test:tools:install`
 
 
 #### Api
-Refer to : `https://www.coingecko.com/api/documentations/v3#/`
+This application consumes 2 (GET) apis: `https://api.coingecko.com/api/v3/exchanges/` and `https://api.coingecko.com/api/v3/exchanges/{id}`
 
+- Refer to docs: `https://www.coingecko.com/api/documentations/v3#/`
 
 
 #### Troubleshooting
@@ -66,21 +77,13 @@ To know more about `npx create-react-app my-app` please read on here:
 - Sass/scss: the `.env` file needs to be adjusted depending on your OS environment, as per instructions in: `https://create-react-app.dev/docs/adding-a-sass-stylesheet`
 
 
-#### Developer Notes
-
-
-#### Tests
-
-
-#### TODO
-
-
+#### Notes
+- Not tested for production as yet.
 
 
 ##### LICENSE
 * LICENCE: CC BY-NC-ND
 * SOURCE: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
-
 
 ##### Thank you
 

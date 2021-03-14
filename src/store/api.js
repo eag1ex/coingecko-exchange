@@ -8,7 +8,7 @@ const apiUrlBase = `https://api.coingecko.com/api/v3`
 const api = {
     base: apiUrlBase,
     /**
-     * (GET)
+     * (GET) 
      * @param {*} {params.per_page, params.page}` how many items to display per result
      * refer to: `https://www.coingecko.com/api/documentations/v3#/exchanges_(beta)/get_exchanges`
      * @returns {*} `[{id,name,year_established,country,description,url,image,has_trading_incentive,has_trading_incentive,trust_score,trust_score_rank,trade_volume_24h_btc,trade_volume_24h_btc_normalized},...]`

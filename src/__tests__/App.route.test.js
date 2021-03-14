@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { loggerSetting } from 'x-utils-es'
-// disable any loggind in testing
+// disable any logging in testing
 loggerSetting('log', 'off')
 loggerSetting('debug', 'off')
 loggerSetting('error', 'off')
@@ -48,7 +48,7 @@ describe('Testing routes', () => {
         done()
     })
 
-    it('should navigate to <ProducDetail/>', async () => {
+    it('should navigate to <ProductDetail/>', async () => {
         jest.setTimeout(30000)
         const { container, getByTestId } = renderWithRouter(<App />)
         await waitForElement(() => getByTestId('exchange-wrap-page-1'))

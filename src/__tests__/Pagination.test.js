@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import { loggerSetting } from 'x-utils-es'
-// disable any loggind in testing
+// disable any logging in testing
 loggerSetting('log', 'off')
 loggerSetting('debug', 'off')
 loggerSetting('error', 'off')
@@ -34,8 +34,8 @@ describe('Change page routes', () => {
         const { getByTestId } = renderWithRouter(<App />)
         await waitForElement(() => getByTestId('exchange-wrap-page-1'))
 
-        const thirdpaged = await waitForElement(() => document.querySelectorAll('[data-testid] ul>li button')[3])
-        fireEvent.click(thirdpaged)
+        const thirdPaged = await waitForElement(() => document.querySelectorAll('[data-testid] ul>li button')[3])
+        fireEvent.click(thirdPaged)
         let doc = await waitForElement(() => getByTestId('exchange-wrap-page-3'))
         expect(doc.innerHTML.length).toBeGreaterThan(0)
     })

@@ -27,7 +27,7 @@ export class ProductModel {
     }
 
     /**
-     * Get a list of formated social media items `[{name,type,url},...]`
+     * Get a list of formatted social media items `[{name,type,url},...]`
      *
      * @readonly
      * @memberof ProductModel
@@ -35,10 +35,6 @@ export class ProductModel {
     get socialList() {
         return [this.item.facebook_url ? { name: 'Facebook', type: 'facebook', url: this.item.facebook_url } : null, this.item.twitter_handle ? { name: 'Twitter', type: 'twitter', url: `http://twitter.com/${this.item.twitter_handle}` } : null, this.item.telegram_url ? { name: 'Telegram', type: 'telegram', url: this.item.telegram_url } : null
         ].filter(n => !!n)
-    }
-
-    onClick(d) {
-        log('onclick', d)
     }
 
 }
