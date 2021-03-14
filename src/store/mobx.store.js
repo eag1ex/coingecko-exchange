@@ -26,11 +26,12 @@ export class MobxStore {
      *
      * Fetch is controlled via withStore.hoc component before the page loads
      * Caching results on subsequent calls to same route
-     * @param {*} params
+     * @param {*} params `{per_page,page}`
+     * @param {*} timeout:number to exit on long wait
      * @returns
      * @memberof MobxStore
      */
-    fetch_exchanges(params) {
+    fetch_exchanges(params, timeout = 5000) {
         if (!params.page) params.page = 1
         
         this.state = 'pending'  
@@ -62,7 +63,7 @@ export class MobxStore {
             method: 'GET',
             //  mode: "no-cors",
             headers: { 'Content-Type': 'application/json;charset=utf-8' },
-            signal: timeoutHandler(5000).signal
+            signal: timeoutHandler(timeout).signal
         }).then(fetchHandler)
             .then((response) => {
                 runInAction(() => {
@@ -93,10 +94,10 @@ export class MobxStore {
      * Fetch is controlled via withProduct.hoc component before the page loads
      * Caching results on subsequent calls to same route
      * @param {*} id
-     * @returns
+     * @param {*} timeout:number to exit on long wait
      * @memberof MobxStore
      */
-    fetch_exchangeProduct(id) {
+    fetch_exchangeProduct(id, timeout = 5000) {
         this.state = 'pending'
 
         if (this.cachedProduct[id]) {
@@ -115,7 +116,7 @@ export class MobxStore {
             method: 'GET',
             //  mode: "no-cors",
             headers: { 'Content-Type': 'application/json;charset=utf-8' },
-            signal: timeoutHandler(5000).signal
+            signal: timeoutHandler(timeout).signal
         }).then(fetchHandler)
             .then((response) => {
 
@@ -128,9 +129,9 @@ export class MobxStore {
 
             }).catch(err => {
 
-                // runInAction(() => {
-                this.state = "error"
-                // })
+                runInAction(() => {
+                    this.state = "error"
+                })
 
                 if (err instanceof DOMException) {
                     onerror('[fetch_exchangeProduct]', err.toString())

@@ -14,6 +14,7 @@ describe('Testing MobxStore', () => {
     let store = new MobxStore()
 
     afterEach(() => {
+        jest.setTimeout(5000)
         cleanup()
     })
 
@@ -37,12 +38,33 @@ describe('Testing MobxStore', () => {
         done()
     })
 
+    it('should EXIT on timeout from api.coingecko/exchanges/3', async (done) => {
+        jest.setTimeout(100)
+
+        const timeout = 10
+        let defer = store.fetch_exchanges({ per_page: 10, page: 3 }, timeout) 
+        expect(store.state).toEqual('pending')
+        await defer
+        expect(store.state).toEqual('error')
+        done()
+    })
+
     it('should return 1 result from api.coingecko/exchanges/binance', async (done) => {
         let defer = store.fetch_exchangeProduct('binance')
         expect(store.state).toEqual('pending')
         await defer  
         expect(store.state).toEqual('ready')
         expect(store.productDetail).toHaveProperty('name', 'Binance')
+        done()
+    })
+
+    it('should EXIT on timeout from api.coingecko/exchanges/gdax', async (done) => {
+        jest.setTimeout(100)
+        const timeout = 10
+        let defer = store.fetch_exchangeProduct('gdax', timeout)
+        expect(store.state).toEqual('pending')
+        await defer  
+        expect(store.state).toEqual('error')
         done()
     })
 
@@ -72,7 +94,6 @@ describe('Testing MobxStore', () => {
         await defer
         expect(store.state).toEqual('error')
         done()
-
     })
 
 })

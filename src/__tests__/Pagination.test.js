@@ -30,11 +30,13 @@ describe('Change page routes', () => {
     })
 
     it('should navigate to page 3 of exchanges', async () => {
-        jest.setTimeout(30000)
+        jest.setTimeout(35000)
         const { getByTestId } = renderWithRouter(<App />)
         await waitForElement(() => getByTestId('exchange-wrap-page-1'))
 
         const thirdPaged = await waitForElement(() => document.querySelectorAll('[data-testid] ul>li button')[3])
+        expect(thirdPaged.innerHTML.length).toBeGreaterThan(0)
+
         fireEvent.click(thirdPaged)
         let doc = await waitForElement(() => getByTestId('exchange-wrap-page-3'))
         expect(doc.innerHTML.length).toBeGreaterThan(0)
