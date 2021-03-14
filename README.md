@@ -77,9 +77,9 @@ To know more about `npx create-react-app my-app` please read on here:
 `https://github.com/facebook/create-react-app/blob/master/README.md`
 
 
-#### Configs
+#### Sass
 - Sass/scss: the `.env` file needs to be adjusted depending on your OS environment, as per instructions in: `https://create-react-app.dev/docs/adding-a-sass-stylesheet`
-
+- got some warnings, try running `npm rebuild node-sass --force`
 
 
 ##### LICENSE
