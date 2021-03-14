@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { loggerSetting, delay } from 'x-utils-es'
+import { loggerSetting } from 'x-utils-es'
 // disable any loggind in testing
 loggerSetting('log', 'off')
 loggerSetting('debug', 'off')
