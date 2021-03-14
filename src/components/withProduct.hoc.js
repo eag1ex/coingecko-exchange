@@ -23,7 +23,7 @@ const onReadyHoc = (Component) => {
         }
 
         if (mobxstore.state === 'pending') {
-            return (<div className="mt-5 row"><div className="col-8 m-auto"><LinearProgress /></div></div>)
+            return (<div className="mt-5 pt-4 row"><div className="col-8 m-auto"><LinearProgress /></div></div>)
         }
 
         if (mobxstore.state === 'error') {

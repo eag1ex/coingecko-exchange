@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
     },
     ListItem: {
         width: 'inherit',
-        maxWidth: '40px'
+        maxWidth: '30px'
     }
 }))
 
@@ -25,15 +25,15 @@ export default function SocialMedia(props) {
     const { socialList } = props
     
     function Alink(props) {
-        return <ListItem className={classes.ListItem + ' px-0'} button component="a" {...props} target=" _blank" />
+        return <ListItem className={classes.ListItem + ' mx-1 px-0'} button component="a" {...props} target=" _blank" />
     }
 
     return (
         <div className={classes.root}>
-            <List component="nav" aria-label="secondary mailbox folders" className="d-flex flex-row">
+            <List component="nav" aria-label="secondary mailbox folders" className="d-flex flex-row justify-content-center">
                 {socialList.map((item, inx) => {
                     return (<Alink key={inx} href={item.url}>
-                        <ListItemIcon>
+                        <ListItemIcon >
                             {item.type === 'facebook' ? (<FacebookIcon color="primary"/>)
                                 : item.type === 'twitter' ? (<TwitterIcon color="primary"/>)
                                     : item.type === 'twitter' ? (<RedditIcon color="primary"/>)

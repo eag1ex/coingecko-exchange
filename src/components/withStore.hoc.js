@@ -23,7 +23,7 @@ const withStoreReady = (Component, entity) => {
 
         if (mobxstore.state === 'error') return (<Message type='error' value='No data from server' />) 
         if (mobxstore.state === 'ready') return (<Component {...props}/>)
-        else return (<div className="mt-5 row"><div className="col-8 m-auto"><LinearProgress /></div></div>)
+        else return (<div className="mt-5 pt-4 row"><div className="col-8 m-auto"><LinearProgress /></div></div>)
     })
     return Hoc
 }

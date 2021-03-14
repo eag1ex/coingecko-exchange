@@ -1,0 +1,37 @@
+@include media-breakpoint-up(sm) {}
+
+
+@include media-breakpoint-down(sm) {
+    .product-item, .product-detail {
+        .product-paper {
+            padding: 1.5rem;
+        }
+
+        .product-grid {
+            width: 100%;
+
+            .button-base {
+                width: 100%;
+                margin: auto;
+                height: inherit;
+            }
+        }
+    }
+    .navbar{
+       .base-link,.base-link-split{
+           display: none;
+       } 
+    }
+}
+
+
+@include media-breakpoint-up(md) {}
+
+
+@include media-breakpoint-down(md) {}
+
+
+@include media-breakpoint-up(lg) {}
+
+
+@include media-breakpoint-up(xl) {}

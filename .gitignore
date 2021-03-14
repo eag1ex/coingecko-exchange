@@ -6,7 +6,7 @@
 .pnp.js
 assets
 # testing
-/coverage
+
 /src/__tests__/__snapshots__
 # production
 /build

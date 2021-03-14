@@ -1,4 +1,4 @@
-import { makeObservable, observable, action, configure } from "mobx"
+import { makeObservable, observable, configure } from "mobx"
 import { copy } from 'x-utils-es'
 
 configure({

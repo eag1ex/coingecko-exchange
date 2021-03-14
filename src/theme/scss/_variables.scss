@@ -1,6 +1,6 @@
 /* stylelint-disable */
 
-// bootstrap variable overites
+// bootstrap variable overtires
 $font-family: Roboto, "Gill Sans", "Gill Sans MT", "Trebuchet MS", sans-serif;
 
 $grey1: #f4f4f4;
@@ -9,15 +9,12 @@ $black: #000;
 $primary: #000;
 $secondary: #00acc1;
 
-// $danger: $red;
-// $dark: $dark1;
-// $warning: $orange;
-// $muted: $grey2;
+$muted: #aaa;
 
 $body-color: $primary;
 $white: $grey1;
 $body-bg: $grey1;
 
-$theme-colors: ("primary": $primary, "dark": $black, "white": $grey1, "secondary": $secondary);
+$theme-colors: ("primary": $primary, "dark": $black, "white": $grey1, "secondary": $secondary, "muted": $muted);
 
 $default-border-radius: 2px;

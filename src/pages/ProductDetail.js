@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
         height: 128
     },
     img: {
-        margin: 'auto',
+        //  margin: 'auto',
         display: 'block',
         maxWidth: '100%',
         maxHeight: '100%'
@@ -63,46 +63,46 @@ const ProductDetail = observer(({ mobxstore, onRouteChange }) => {
     const classes = useStyles()
 
     return (
-        <div className={classes.root + ' mt-5'} data-testid="product-detail">
-            <Paper className={classes.paper}>
-                <Grid container spacing={2}>
-                    <Grid item >
-                        <ButtonBase className={classes.image}>
-                            <img className={classes.img} alt="complex" src={prod.item.image} />
+        <div className={classes.root + ' mt-5 product-detail my-4'} data-testid="product-detail">
+            <Paper className={classes.paper + ' product-paper'}>
+                <Grid container spacing={2} >
+                    <Grid item className='product-grid'> 
+                        <ButtonBase className={classes.image + ' m-auto button-base'}>
+                            <img className={classes.img + ' m-auto'} alt="complex" src={prod.item.image} />
                         </ButtonBase>
                     </Grid>
                     <Grid item xs={12} sm container className="pt-4">
                         <Grid item xs container direction="column" spacing={2}>
                             <Grid item xs>
-                                <Typography gutterBottom variant="subtitle1" className="my-0">
+                                <Typography gutterBottom variant="subtitle1" className="my-0 larger">
                                     <strong>{prod.item.name}</strong>
                                 </Typography>
                                 <Typography variant="body2" gutterBottom className="my-1">
 
                                     <React.Fragment> 
-                                        {prod.item.description ? (<><span className="text-muted cf">Description:</span><span className=" mt-0">{prod.item.description}</span></>) : null}
+                                        {prod.item.description ? (<><span className="text-muted cf strong">Description:</span><span className=" mt-0">{prod.item.description}</span></>) : null}
                                     </React.Fragment>
            
                                 </Typography>
 
                                 <Typography variant="body2" gutterBottom className="my-1">
-                                    <span className="text-muted">Country: </span>{prod.item.country}
+                                    <span className="text-muted strong">Country: </span>{prod.item.country}
                                 </Typography>
 
                                 <Typography variant="body2" gutterBottom className="my-1">
-                                    <span className="text-muted">Trust Rank: </span>{prod.item.trust_score_rank}
+                                    <span className="text-muted strong">Trust Rank: </span>{prod.item.trust_score_rank}
                                 </Typography>
 
                                 <Typography variant="body2" gutterBottom className="my-1">
-                                    <span className="text-muted">Established:</span> {prod.item.year_established}
+                                    <span className="text-muted strong">Established:</span> {prod.item.year_established}
                                 </Typography>
                                 
                                 { prod.item.url ? (<Typography variant="body2" color="textSecondary" >
                               
-                                    <span className="text-muted">URL: </span>                               
+                                    <span className="text-muted align-left strong">URL: </span>                               
                                     <Link
                                         target=" _blank"
-                                        className="px-0 btn btn-sm text-muted"
+                                        className="px-0 btn btn-sm text-primary align-left smaller"
                                         href={prod.item.url}>
                                         {prod.item.url}
                                     </Link>

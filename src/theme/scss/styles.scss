@@ -1,8 +1,9 @@
-//@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
-//@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap");
+
 @import "./variables";
 @import "./bootstrap";
 @import "./mixins.scss";
+@import "./responsive.scss";
 
 html {
     background: $white;
@@ -30,8 +31,35 @@ body {
 
 .cf {
     &::after {
-      display: block;
-      clear: both;
-      content: "";
+        display: block;
+        clear: both;
+        content: "";
     }
-  }
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.larger{
+    font-size:larger;
+}
+.smaller {
+    font-size: smaller;
+}
+
+.strong {
+    font-weight: 700;
+}
+
+.text-muted {
+    color: $muted !important;
+}

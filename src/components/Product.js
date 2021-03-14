@@ -44,30 +44,30 @@ const Product = observer(({ mobxstore, item, history, page }) => {
     const classes = useStyles()
 
     return (
-        <div className={classes.root + ' product-item'}>
-            <Paper className={classes.paper}>
+        <div className={classes.root + ' product-item my-4'}>
+            <Paper className={classes.paper + ' product-paper'}>
                 <Grid container spacing={2}>
-                    <Grid item >
-                        <ButtonBase className={classes.image}>
+                    <Grid item className='product-grid'>
+                        <ButtonBase className={classes.image + ' m-auto button-base'}>
                             <img className={classes.img} alt="complex" src={prod.item.image} />
                         </ButtonBase>
                     </Grid>
                     <Grid item xs={12} sm container className="pt-4">
                         <Grid item xs container direction="column" spacing={2}>
                             <Grid item xs>
-                                <Typography gutterBottom variant="subtitle1" className="my-0">
+                                <Typography gutterBottom variant="subtitle1" className="my-0 larger">
                                     <strong>{prod.item.name}</strong>
                                 </Typography>
                                 <Typography variant="body2" gutterBottom className="my-0">
-                                    {prod.item.country}
+                                    <span className="text-muted strong">Country: </span>{prod.item.country}
                                 </Typography>
                                 <Typography variant="body2" color="textSecondary" >
+                                    <span className="text-muted align-left strong">URL: </span>  
                                     <Link 
                                         target=" _blank"
-                                        className="px-0 btn btn-sm btn-muted text-muted"
-                                        href={prod.item.url} onClick={(e) => {
-                                        }}>
-                                        URL: {prod.item.url}
+                                        className="px-0 btn btn-sm text-primary align-left smaller"
+                                        href={prod.item.url}>
+                                        {prod.item.url}
                                     </Link>
                                 </Typography>
                             </Grid>

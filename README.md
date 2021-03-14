@@ -28,6 +28,10 @@ Opens in http://localhost:3000/
 /$ npm start
 ```
 
+#### Production
+To test production mode, execute  `npm run build` then install static server with `npm install -g serve`
+and finally execute `serve -s build`
+
 
 #### Stack
 Application stack: `React v16, Mobx v6, es6, MVC, React Material (configurable), Bootstrap (configurable), x-utils-es, Javascript`
@@ -78,7 +82,7 @@ To know more about `npx create-react-app my-app` please read on here:
 
 
 #### Notes
-- Not tested for production as yet.
+- Not optimized for mobile as yet.
 
 
 ##### LICENSE

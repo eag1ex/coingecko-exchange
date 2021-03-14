@@ -67,9 +67,10 @@ export class MobxStore {
         }).then(fetchHandler)
             .then((response) => {
                 runInAction(() => {
-                    this.exchanges = response || []
-
-                    this.exchanges.sort((a, b) => b.trust_score_rank - a.trust_score_rank)               
+                    response = response || []
+                    response.sort((a, b) => b.trust_score_rank - a.trust_score_rank)
+                    
+                    this.exchanges = response || []           
                     this.cachedExchangePaged[params.page] = response
                     this.state = "ready"
                     log('[exchanges]', this.exchanges)

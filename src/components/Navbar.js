@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1
     },
     menuButton: {
-        marginRight: theme.spacing(2)
+        marginRight: theme.spacing(1)
     },
     title: {
         flexGrow: 1
@@ -22,19 +22,20 @@ const useStyles = makeStyles((theme) => ({
 let Links = (props) => {
     const { first, second } = props
     let { name, route } = first || {}
+    
     return (<React.Fragment>
         {route && !second ? (<NavLink
-            className="btn btn-sm btn-secondary text-white py-0 px-0"
+            className="btn btn-sm btn-secondary text-white py-0 px-0 strong"
             activeClassName="is-active"
             to={route}
             exact>
             {name.toUpperCase()}</NavLink>)
             : route && second ? (<><NavLink
-                className="btn btn-sm btn-secondary text-white py-0 px-0"
+                className="btn btn-sm btn-secondary text-white py-0 px-0 base-link d-none-sm d-block-md"
                 to={(route + '/' + second)}
                 exact>
-                {name.toUpperCase()}</NavLink>&nbsp;/&nbsp;<NavLink
-                className="btn btn-sm btn-secondary text-white py-0 px-0"
+                {name.toUpperCase()}</NavLink><span className="base-link-split">&nbsp;/&nbsp;</span><NavLink
+                className="btn btn-sm btn-secondary text-white py-0 px-0 dest-link strong"
                 activeClassName="is-active"
                 to={second}
                 exact>
