@@ -22,7 +22,7 @@ describe('Test <SocialMedia/> component', () => {
     it('<SocialMedia/> should display all available svgs', () => {
         let list = socialList()
         const { container } = render(<SocialMedia socialList={list} />)           
-        expect(container.querySelectorAll('svg').length).toEqual(list.length)
+        expect(container.querySelectorAll('[data-testid*="social-ico-"]').length).toEqual(list.length)
     })
 
 })

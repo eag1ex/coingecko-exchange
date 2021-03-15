@@ -338,7 +338,7 @@ import { observer } from "mobx-react-lite"
 import Link from '@material-ui/core/Link'
 import { useParams } from "react-router-dom"
 import withProduct from '../components/withProduct.hoc'
-import { ProductModel } from './Models'
+import { ProductModel } from '../components/product.models'
 import SocialMedia from '../components/SocialMedia'
 import { NavLink, withRouter } from "react-router-dom"
 &nbsp;
@@ -359,7 +359,7 @@ const useStyles = makeStyles((theme) =&gt; ({
         height: 128
     },
     img: {
-        margin: 'auto',
+        //  margin: 'auto',
         display: 'block',
         maxWidth: '100%',
         maxHeight: '100%'
@@ -393,46 +393,46 @@ const ProductDetail = observer(({ mobxstore, onRouteChange }) =&gt; {
     const classes = useStyles()
 &nbsp;
     return (
-        &lt;div className={classes.root + ' mt-5'} data-testid="product-detail"&gt;
-            &lt;Paper className={classes.paper}&gt;
-                &lt;Grid container spacing={2}&gt;
-                    &lt;Grid item &gt;
-                        &lt;ButtonBase className={classes.image}&gt;
-                            &lt;img className={classes.img} alt="complex" src={prod.item.image} /&gt;
+        &lt;div className={classes.root + ' mt-5 product-detail my-4'} data-testid="product-detail"&gt;
+            &lt;Paper className={classes.paper + ' product-paper'}&gt;
+                &lt;Grid container spacing={2} &gt;
+                    &lt;Grid item className='product-grid'&gt; 
+                        &lt;ButtonBase className={classes.image + ' m-auto button-base'}&gt;
+                            &lt;img className={classes.img + ' m-auto'} alt="complex" src={prod.item.image} /&gt;
                         &lt;/ButtonBase&gt;
                     &lt;/Grid&gt;
                     &lt;Grid item xs={12} sm container className="pt-4"&gt;
                         &lt;Grid item xs container direction="column" spacing={2}&gt;
                             &lt;Grid item xs&gt;
-                                &lt;Typography gutterBottom variant="subtitle1" className="my-0"&gt;
+                                &lt;Typography gutterBottom variant="subtitle1" className="my-0 larger"&gt;
                                     &lt;strong&gt;{prod.item.name}&lt;/strong&gt;
                                 &lt;/Typography&gt;
                                 &lt;Typography variant="body2" gutterBottom className="my-1"&gt;
 &nbsp;
                                     &lt;React.Fragment&gt; 
-                                        {prod.item.description ? (<span class="branch-0 cbranch-no" title="branch not covered" >&lt;&gt;&lt;span className="text-muted cf"&gt;Description:&lt;/span&gt;&lt;span className=" mt-0"&gt;{prod.item.description}&lt;/span&gt;&lt;/&gt;)</span> : null}
+                                        {prod.item.description ? (<span class="branch-0 cbranch-no" title="branch not covered" >&lt;&gt;&lt;span className="text-muted cf strong"&gt;Description:&lt;/span&gt;&lt;span className=" mt-0"&gt;{prod.item.description}&lt;/span&gt;&lt;/&gt;)</span> : null}
                                     &lt;/React.Fragment&gt;
            
                                 &lt;/Typography&gt;
 &nbsp;
                                 &lt;Typography variant="body2" gutterBottom className="my-1"&gt;
-                                    &lt;span className="text-muted"&gt;Country: &lt;/span&gt;{prod.item.country}
+                                    &lt;span className="text-muted strong"&gt;Country: &lt;/span&gt;{prod.item.country}
                                 &lt;/Typography&gt;
 &nbsp;
                                 &lt;Typography variant="body2" gutterBottom className="my-1"&gt;
-                                    &lt;span className="text-muted"&gt;Trust Rank: &lt;/span&gt;{prod.item.trust_score_rank}
+                                    &lt;span className="text-muted strong"&gt;Trust Rank: &lt;/span&gt;{prod.item.trust_score_rank}
                                 &lt;/Typography&gt;
 &nbsp;
                                 &lt;Typography variant="body2" gutterBottom className="my-1"&gt;
-                                    &lt;span className="text-muted"&gt;Established:&lt;/span&gt; {prod.item.year_established}
+                                    &lt;span className="text-muted strong"&gt;Established:&lt;/span&gt; {prod.item.year_established}
                                 &lt;/Typography&gt;
                                 
                                 { prod.item.url ? (&lt;Typography variant="body2" color="textSecondary" &gt;
                               
-                                    &lt;span className="text-muted"&gt;URL: &lt;/span&gt;                               
+                                    &lt;span className="text-muted align-left strong"&gt;URL: &lt;/span&gt;                               
                                     &lt;Link
                                         target=" _blank"
-                                        className="px-0 btn btn-sm text-muted"
+                                        className="px-0 btn btn-sm text-primary align-left smaller"
                                         href={prod.item.url}&gt;
                                         {prod.item.url}
                                     &lt;/Link&gt;
@@ -471,7 +471,7 @@ export default withRouter(withProduct(ProductDetail))
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Sun Mar 14 2021 16:52:42 GMT+0000 (GMT)
+                at Mon Mar 15 2021 09:23:49 GMT+0000 (GMT)
             </div>
         </div>
         <script src="..\..\prettify.js"></script>

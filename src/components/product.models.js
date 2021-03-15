@@ -33,7 +33,7 @@ export class ProductModel {
      * @memberof ProductModel
      */
     get socialList() {
-        return [this.item.facebook_url ? { name: 'Facebook', type: 'facebook', url: this.item.facebook_url } : null, this.item.twitter_handle ? { name: 'Twitter', type: 'twitter', url: `http://twitter.com/${this.item.twitter_handle}` } : null, this.item.telegram_url ? { name: 'Telegram', type: 'telegram', url: this.item.telegram_url } : this.item.reddit_url ? { name: 'Reddit', url: this.item.reddit_url, type: 'reddit' } : null, !this.item.slack_url ? { name: 'Slack', url: this.item.slack_url, type: 'slack' } : null
+        return [this.item.facebook_url ? { name: 'Facebook', type: 'facebook', url: this.item.facebook_url } : null, this.item.twitter_handle ? { name: 'Twitter', type: 'twitter', url: `http://twitter.com/${this.item.twitter_handle}` } : null, this.item.telegram_url ? { name: 'Telegram', type: 'telegram', url: this.item.telegram_url } : this.item.reddit_url ? { name: 'Reddit', url: this.item.reddit_url, type: 'reddit' } : null, this.item.slack_url ? { name: 'Slack', url: this.item.slack_url, type: 'slack' } : null
         ].filter(n => !!n)
     }
 }

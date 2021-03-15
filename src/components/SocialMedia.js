@@ -24,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
 export default function SocialMedia(props) {
     const classes = useStyles()
     const { socialList } = props
-    console.log('socialList', socialList)
     
     function Alink(props) {
         return <ListItem className={classes.ListItem + ' mx-1 px-0'} button component="a" {...props} target=" _blank" />
@@ -35,7 +34,7 @@ export default function SocialMedia(props) {
             <List component="nav" aria-label="secondary mailbox folders" className="d-flex flex-row justify-content-center">
                 {socialList.map((item, inx) => {
                     return (<Alink key={inx} href={item.url}>
-                        <ListItemIcon >
+                        <ListItemIcon data-testid={(`social-ico-${inx}`)} >
                             {item.type === 'facebook' ? (<FacebookIcon color="primary"/>)
                                 : item.type === 'twitter' ? (<TwitterIcon color="primary"/>)
                                     : item.type === 'slack' ? (<SlackIcon/>)
