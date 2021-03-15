@@ -8,7 +8,7 @@ import { observer } from "mobx-react-lite"
 import Link from '@material-ui/core/Link'
 import { useParams } from "react-router-dom"
 import withProduct from '../components/withProduct.hoc'
-import { ProductModel } from './Models'
+import { ProductModel } from '../components/product.models'
 import SocialMedia from '../components/SocialMedia'
 import { NavLink, withRouter } from "react-router-dom"
 

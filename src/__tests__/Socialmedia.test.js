@@ -12,7 +12,7 @@ import SocialMedia from '../components/SocialMedia'
 describe('Test <SocialMedia/> component', () => {
 
     const socialList = () => {
-        return [{ name: 'Facebook', type: 'facebook', url: 'fake_url' }, { name: 'Twitter', type: 'twitter', url: `http://twitter.com/fake_id` }, { name: 'Telegram', type: 'telegram', url: 'fake_url' }]
+        return [{ name: 'Facebook', type: 'facebook', url: 'fake_url' }, { name: 'Twitter', type: 'twitter', url: `http://twitter.com/fake_id` }, { name: 'Telegram', type: 'telegram', url: 'fake_url' }, { name: 'Slack', url: 'fake_url', type: 'slack' }, { name: 'Reddit', url: 'fake_url', type: 'reddit' }]
     }
 
     afterEach(() => {

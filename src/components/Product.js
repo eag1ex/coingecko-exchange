@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography'
 import ButtonBase from '@material-ui/core/ButtonBase'
 import { observer } from "mobx-react-lite"
 import Link from '@material-ui/core/Link'
-import { ProductModel } from '../pages/Models'
+import { ProductModel } from './product.models'
 import { NavLink } from "react-router-dom"
 import TrendingUpIcon from '@material-ui/icons/TrendingUp'
 const useStyles = makeStyles((theme) => ({

@@ -8,6 +8,7 @@ import FacebookIcon from '@material-ui/icons/Facebook'
 import TwitterIcon from '@material-ui/icons/Twitter'
 import RedditIcon from '@material-ui/icons/Reddit'
 import TelegramIcon from '@material-ui/icons/Telegram'
+import SlackIcon from './icons/SlackIcon'
 const useStyles = makeStyles((theme) => ({
     root: {
         width: '100%',
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 export default function SocialMedia(props) {
     const classes = useStyles()
     const { socialList } = props
+    console.log('socialList', socialList)
     
     function Alink(props) {
         return <ListItem className={classes.ListItem + ' mx-1 px-0'} button component="a" {...props} target=" _blank" />
@@ -36,8 +38,9 @@ export default function SocialMedia(props) {
                         <ListItemIcon >
                             {item.type === 'facebook' ? (<FacebookIcon color="primary"/>)
                                 : item.type === 'twitter' ? (<TwitterIcon color="primary"/>)
-                                    : item.type === 'twitter' ? (<RedditIcon color="primary"/>)
-                                        : item.type === 'telegram' ? (<TelegramIcon color="primary"/>) : null    
+                                    : item.type === 'slack' ? (<SlackIcon/>)
+                                        : item.type === 'reddit' ? (<RedditIcon color="primary"/>)
+                                            : item.type === 'telegram' ? (<TelegramIcon color="primary"/>) : null    
                             }
 
                         </ListItemIcon>

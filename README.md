@@ -54,6 +54,7 @@ Running tests:
 - Components
 - Pages
     - Exchange
+    - ProductDetail
 
 - Store
     - api `(list of available api)`
