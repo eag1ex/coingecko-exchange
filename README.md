@@ -14,7 +14,7 @@ React with Mobx application showing bitcoin exchanges in a paged list with view 
 - Mobile optimized
 
 #### Install 
-Build in `Node.js 12.0.0` and `NPM 6.9.0` in strict mode, maybe supported on higher but not tested
+Build in `Node.js 12.0.0` and `NPM 6.9.0` in strict mode, maybe supported on higher, but not tested
 
 ```sh
 /$ npm i 
@@ -57,7 +57,7 @@ Running tests:
     - ProductDetail
 
 - Store
-    - api `(list of available api)`
+    - api `(list of available apis)`
     - Mobx `(store and state manager)`
 - Theme `(scss and React Material)` 
 - Utils
