@@ -22,17 +22,17 @@ const useStyles = makeStyles((theme) => ({
 let Links = (props) => {
     const { first, second } = props
     let { name, route } = first || {}
-    
+    console.log('route', route)
     return (<React.Fragment>
         {route && !second ? (<NavLink
             className="btn btn-sm btn-secondary text-white py-0 px-0 strong"
             activeClassName="is-active"
-            to={route}
+            to={(`/app/` + route)}
             exact>
             {name.toUpperCase()}</NavLink>)
             : route && second ? (<><NavLink
                 className="btn btn-sm btn-secondary text-white py-0 px-0 base-link d-none-sm d-block-md"
-                to={(route + '/' + second)}
+                to={(`/app/` + route)}
                 exact>
                 {name.toUpperCase()}</NavLink><span className="base-link-split">&nbsp;/&nbsp;</span><NavLink
                 className="btn btn-sm btn-secondary text-white py-0 px-0 dest-link strong"

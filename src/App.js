@@ -41,6 +41,9 @@ function App() {
                         <Route exact path="/app">
                             <Redirect to="/app/exchanges/1"/>
                         </Route>
+                        <Route exact path="/app/exchanges">
+                            <Redirect to="/app/exchanges/1"/>
+                        </Route>
                         
                         <Route exact path="/exchanges/:name">
                             <Redirect to="/app/exchanges/1"/>
