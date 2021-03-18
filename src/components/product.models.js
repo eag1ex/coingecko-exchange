@@ -1,4 +1,4 @@
-// NOTE this is nto a component but a class model fro Product.js and ProductDetail.js
+// NOTE this is not a component but a class model for Product.js and ProductDetail.js
 
 import { makeObservable, observable, configure } from "mobx"
 import { copy } from 'x-utils-es'
