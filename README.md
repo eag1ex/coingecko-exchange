@@ -28,13 +28,25 @@ Opens in http://localhost:3000/
 /$ npm start
 ```
 
+
+### Demo
+Live demo available behind login:
+`https://hidden-forest-35005.herokuapp.com/login`
+```sh
+# login: eaglex
+# password: eaglex
+```
+- session times out, its a free dyno, may take time initially
+
+
+
 #### Production
 To test production mode, execute  `npm run build` then install static server with `npm install -g serve`
 and finally execute `serve -s build`
 
 
 #### Stack
-Application stack: `React v16, Mobx v6, es6, MVC, React Material (configurable), Bootstrap (configurable), x-utils-es, Javascript, Jest, nyc/instanbul`
+Application stack: `React v16, Mobx v6, es6, MVC, React Material (configurable), Bootstrap (configurable), x-utils-es, Javascript, Jest, nyc/instanbul, scss`
 
 
 #### Tests
