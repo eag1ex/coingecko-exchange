@@ -33,7 +33,7 @@ export const fetchHandler = async (response) => {
  */
 export const timeoutHandler = (timeout = 5000) => {
     const controller = new AbortController()
-    const timer = setTimeout(() => controller.abort('err'), timeout)
+    const timer = setTimeout(() => controller.abort('Aborted'), timeout)
     delay(100).then(n => {
         clearTimeout(timer)
     })

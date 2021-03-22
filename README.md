@@ -34,7 +34,7 @@ and finally execute `serve -s build`
 
 
 #### Stack
-Application stack: `React v16, Mobx v6, es6, MVC, React Material (configurable), Bootstrap (configurable), x-utils-es, Javascript`
+Application stack: `React v16, Mobx v6, es6, MVC, React Material (configurable), Bootstrap (configurable), x-utils-es, Javascript, Jest, nyc/instanbul`
 
 
 #### Tests
