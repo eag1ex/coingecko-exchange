@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 assets
+__temp
 # testing
 
 /src/__tests__/__snapshots__
