@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "./static/css/main.d96985db.chunk.css",
-    "main.js": "./static/js/main.41aa3544.chunk.js",
-    "main.js.map": "./static/js/main.41aa3544.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.0e1a0602.js",
-    "runtime-main.js.map": "./static/js/runtime-main.0e1a0602.js.map",
-    "static/js/2.77dd0515.chunk.js": "./static/js/2.77dd0515.chunk.js",
-    "static/js/2.77dd0515.chunk.js.map": "./static/js/2.77dd0515.chunk.js.map",
-    "index.html": "./index.html",
-    "precache-manifest.68b819eb6ce070022e1ce7d3d53ad964.js": "./precache-manifest.68b819eb6ce070022e1ce7d3d53ad964.js",
-    "service-worker.js": "./service-worker.js",
-    "static/css/main.d96985db.chunk.css.map": "./static/css/main.d96985db.chunk.css.map",
-    "static/js/2.77dd0515.chunk.js.LICENSE.txt": "./static/js/2.77dd0515.chunk.js.LICENSE.txt",
-    "static/media/slack_icon.png": "./static/media/slack_icon.2522dee8.png"
+    "main.css": "/coingecko-exchange/app/exchanges/static/css/main.d96985db.chunk.css",
+    "main.js": "/coingecko-exchange/app/exchanges/static/js/main.78a80b8d.chunk.js",
+    "main.js.map": "/coingecko-exchange/app/exchanges/static/js/main.78a80b8d.chunk.js.map",
+    "runtime-main.js": "/coingecko-exchange/app/exchanges/static/js/runtime-main.803818c6.js",
+    "runtime-main.js.map": "/coingecko-exchange/app/exchanges/static/js/runtime-main.803818c6.js.map",
+    "static/js/2.77dd0515.chunk.js": "/coingecko-exchange/app/exchanges/static/js/2.77dd0515.chunk.js",
+    "static/js/2.77dd0515.chunk.js.map": "/coingecko-exchange/app/exchanges/static/js/2.77dd0515.chunk.js.map",
+    "index.html": "/coingecko-exchange/app/exchanges/index.html",
+    "precache-manifest.7fddb027139101d8f8507928456b68e9.js": "/coingecko-exchange/app/exchanges/precache-manifest.7fddb027139101d8f8507928456b68e9.js",
+    "service-worker.js": "/coingecko-exchange/app/exchanges/service-worker.js",
+    "static/css/main.d96985db.chunk.css.map": "/coingecko-exchange/app/exchanges/static/css/main.d96985db.chunk.css.map",
+    "static/js/2.77dd0515.chunk.js.LICENSE.txt": "/coingecko-exchange/app/exchanges/static/js/2.77dd0515.chunk.js.LICENSE.txt",
+    "static/media/slack_icon.png": "/coingecko-exchange/app/exchanges/static/media/slack_icon.2522dee8.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.0e1a0602.js",
+    "static/js/runtime-main.803818c6.js",
     "static/js/2.77dd0515.chunk.js",
     "static/css/main.d96985db.chunk.css",
-    "static/js/main.41aa3544.chunk.js"
+    "static/js/main.78a80b8d.chunk.js"
   ]
 }
