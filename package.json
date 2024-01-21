@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "homepage": ".",
   "scripts": {
     "start": "cross-env NODE_ENV=development react-scripts start",
     "build": "cross-env NODE_ENV=production react-scripts build",
@@ -11,7 +12,9 @@
     "eject": "react-scripts eject",
     "lint:install": "npm i babel-eslint eslint eslint-plugin-node eslint-plugin-standard eslint-plugin-promise@latest --save-dev",
     "lint": "./node_modules/.bin/eslint  --ext .js src",
-    "lint:fix": "./node_modules/.bin/eslint --fix --ext .js src"
+    "lint:fix": "./node_modules/.bin/eslint --fix --ext .js src",
+    "deploy:github": "gh-pages -d build",
+    "serve": "serve"
   },
   "author": "",
   "license": "CC BY-NC-ND",
@@ -63,6 +66,7 @@
     "@babel/core": "^7.23.7",
     "@babel/plugin-proposal-class-properties": "^7.13.0",
     "@babel/preset-env": "^7.13.9",
+    "@types/gh-pages": "^6.1.0",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
     "enzyme": "^3.11.0",
@@ -70,6 +74,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-standard": "^5.0.0"
+    "eslint-plugin-standard": "^5.0.0",
+    "gh-pages": "^6.1.1"
   }
 }

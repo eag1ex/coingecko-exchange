@@ -60,9 +60,12 @@ export class MobxStore {
         debug('[fetch]', api.exchanges(params))
 
         return fetch(api.exchanges(params), {
+            // mode: 'no-cors',
             method: 'GET',
-            //  mode: "no-cors",
-            headers: { 'Content-Type': 'application/json;charset=utf-8' },
+
+            headers: { 
+                // 'Access-Control-Allow-Origin': "*",
+                'Content-Type': 'application/json;charset=utf-8' },
             signal: timeoutHandler(timeout).signal
         }).then(fetchHandler)
             .then((response) => {
@@ -114,30 +117,33 @@ export class MobxStore {
         debug('[fetch]', api.exchangesProduct(id))
 
         return fetch(api.exchangesProduct(id), {
-            method: 'GET',
+    
+            method: "GET",
             //  mode: "no-cors",
-            headers: { 'Content-Type': 'application/json;charset=utf-8' },
+            headers: {
+                // "Access-Control-Allow-Origin": "*",
+                "Content-Type": "application/json;charset=utf-8"
+            },
             signal: timeoutHandler(timeout).signal
-        }).then(fetchHandler)
+        })
+            .then(fetchHandler)
             .then((response) => {
-
                 runInAction(() => {
-                    this.productDetail = response || {}                               
+                    this.productDetail = response || {}
                     this.cachedProduct[id] = response
                     this.state = "ready"
-                    log('[productDetail]', this.productDetail)
+                    log("[productDetail]", this.productDetail)
                 })
-
-            }).catch(err => {
-
+            })
+            .catch((err) => {
                 runInAction(() => {
                     this.state = "error"
                 })
 
                 if (err instanceof DOMException) {
-                    onerror('[fetch_exchangeProduct]', err.toString())
+                    onerror("[fetch_exchangeProduct]", err.toString())
                 } else {
-                    onerror('[fetch_exchangeProduct]', err)
+                    onerror("[fetch_exchangeProduct]", err)
                 }
             })
     }
