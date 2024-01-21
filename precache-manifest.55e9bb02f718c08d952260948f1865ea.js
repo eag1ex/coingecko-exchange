@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9e540051ead7f85f48d91d4ba755bc04",
+    "revision": "0e9e3d60107be3d67f033beb57c2e927",
     "url": "/coingecko-exchange/index.html"
   },
   {
-    "revision": "6aeea2f1fe6a2f1d14a7",
+    "revision": "097b29d45dce8f9bc518",
     "url": "/coingecko-exchange/static/css/main.d96985db.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coingecko-exchange/static/js/2.77dd0515.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "6aeea2f1fe6a2f1d14a7",
-    "url": "/coingecko-exchange/static/js/main.78a80b8d.chunk.js"
+    "revision": "097b29d45dce8f9bc518",
+    "url": "/coingecko-exchange/static/js/main.5a09c203.chunk.js"
   },
   {
     "revision": "79ba1fa14e8014d22e80",

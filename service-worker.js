@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/coingecko-exchange/precache-manifest.bb9f8a0d5849695d94683f7896e0e1e0.js"
+  "/coingecko-exchange/precache-manifest.55e9bb02f718c08d952260948f1865ea.js"
 );
 
 self.addEventListener('message', (event) => {
