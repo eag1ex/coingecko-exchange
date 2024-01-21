@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/coingecko-exchange/static/css/main.d96985db.chunk.css",
-    "main.js": "/coingecko-exchange/static/js/main.5a09c203.chunk.js",
-    "main.js.map": "/coingecko-exchange/static/js/main.5a09c203.chunk.js.map",
+    "main.js": "/coingecko-exchange/static/js/main.bc3fd7ec.chunk.js",
+    "main.js.map": "/coingecko-exchange/static/js/main.bc3fd7ec.chunk.js.map",
     "runtime-main.js": "/coingecko-exchange/static/js/runtime-main.20cb62f3.js",
     "runtime-main.js.map": "/coingecko-exchange/static/js/runtime-main.20cb62f3.js.map",
     "static/js/2.77dd0515.chunk.js": "/coingecko-exchange/static/js/2.77dd0515.chunk.js",
     "static/js/2.77dd0515.chunk.js.map": "/coingecko-exchange/static/js/2.77dd0515.chunk.js.map",
     "index.html": "/coingecko-exchange/index.html",
-    "precache-manifest.55e9bb02f718c08d952260948f1865ea.js": "/coingecko-exchange/precache-manifest.55e9bb02f718c08d952260948f1865ea.js",
+    "precache-manifest.cfc637f4a77d08c8f89bab36a949a77f.js": "/coingecko-exchange/precache-manifest.cfc637f4a77d08c8f89bab36a949a77f.js",
     "service-worker.js": "/coingecko-exchange/service-worker.js",
     "static/css/main.d96985db.chunk.css.map": "/coingecko-exchange/static/css/main.d96985db.chunk.css.map",
     "static/js/2.77dd0515.chunk.js.LICENSE.txt": "/coingecko-exchange/static/js/2.77dd0515.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.20cb62f3.js",
     "static/js/2.77dd0515.chunk.js",
     "static/css/main.d96985db.chunk.css",
-    "static/js/main.5a09c203.chunk.js"
+    "static/js/main.bc3fd7ec.chunk.js"
   ]
 }
