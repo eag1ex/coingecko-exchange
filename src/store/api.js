@@ -4,7 +4,9 @@
 import queryString from 'query-string'
 import { isEmpty } from 'x-utils-es'
 
-const apiUrlBase = `https://api.coingecko.com/api/v3`
+// https://api.coingecko.com/api/v3
+const apiUrlBase = process.env.REACT_APP_SERVER_API || process.env.REACT_APP_COINGECKO_API
+
 const api = {
     base: apiUrlBase,
     /**

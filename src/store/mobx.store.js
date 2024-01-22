@@ -58,13 +58,14 @@ export class MobxStore {
     
         this.exchanges = []
         debug('[fetch]', api.exchanges(params))
-
+        
         return fetch(api.exchanges(params), {
             // mode: 'no-cors',
             method: 'GET',
 
             headers: { 
                 // 'Access-Control-Allow-Origin': "*",
+                'Function-Code': `${process.env.REACT_APP_FUNCTION_CODE}`,
                 'Content-Type': 'application/json;charset=utf-8' },
             signal: timeoutHandler(timeout).signal
         }).then(fetchHandler)
@@ -122,6 +123,7 @@ export class MobxStore {
             //  mode: "no-cors",
             headers: {
                 // "Access-Control-Allow-Origin": "*",
+                'Function-Code': `${process.env.REACT_APP_FUNCTION_CODE}`,
                 "Content-Type": "application/json;charset=utf-8"
             },
             signal: timeoutHandler(timeout).signal
