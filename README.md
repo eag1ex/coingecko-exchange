@@ -1,6 +1,18 @@
 ### Coingecko Exchange
 #### - [ Developed by Eaglex ](http://eaglex.net)
 
+
+#### <span style="color:red">Latest updates</span>
+
+<i>Project demo is now available on github pages: </i>
+[ >> coingecko-exchange <<](https://eag1ex.github.io/coingecko-exchange/)
+
+<br>
+
+<img src="./screens/coingecko-exchange-featured.jpg" width="400"/>
+<br>
+
+
 #### About
 React with Mobx application showing bitcoin exchanges in a paged list with view to each bitcoin product detail.
 
