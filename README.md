@@ -1,16 +1,5 @@
 ### Coingecko Exchange
-#### - [ Developed by Eaglex ](http://eaglex.net)
-
-
-#### <span style="color:red">Latest updates</span>
-
-<i>Project demo is now available on github pages: </i>
-[ >> coingecko-exchange <<](https://eag1ex.github.io/coingecko-exchange/)
-
-<br>
-
-<img src="./screens/coingecko-exchange-featured.jpg" width="400"/>
-<br>
+[ Developed by Eaglex ](http://eaglex.net)
 
 
 #### About
@@ -24,6 +13,19 @@ React with Mobx application showing bitcoin exchanges in a paged list with view 
 - Tests and Coverage provided
 - React Material and Bootstrap 
 - Mobile optimized
+
+<br>
+
+### <span style="color:red">Latest updates</span>
+
+<i>Project demo is now available on github pages: </i>
+[ >> coingecko-exchange <<](https://eag1ex.github.io/coingecko-exchange/)
+
+<br>
+
+<img src="./screens/coingecko-exchange-featured.jpg" width="400"/>
+<br>
+<br>
 
 #### Install 
 Build in `Node.js 12.0.0` and `NPM 6.9.0` in strict mode, maybe supported on higher, but not tested
@@ -43,8 +45,10 @@ Opens in http://localhost:3000/
 
 ### Demo
 Live demo available behind login:
-`https://hidden-forest-35005.herokuapp.com/login`
+
 ```sh
+## OLD, INACTIVE
+# https://hidden-forest-35005.herokuapp.com/login
 # login: eaglex
 # password: eaglex
 ```
@@ -108,7 +112,7 @@ To know more about `npx create-react-app my-app` please read on here:
 
 
 ##### LICENSE
-* LICENCE: CC BY-NC-ND
+* LICENSE: CC BY-NC-ND
 * SOURCE: https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
 
 ##### Thank you
