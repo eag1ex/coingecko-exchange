@@ -117,3 +117,6 @@ To know more about `npx create-react-app my-app` please read on here:
 
 ##### Thank you
 
+### Logs
+- 27/Jun/24 migrated cyclic.sh (EOL) to another koyeb.app
+
